@@ -1,1 +1,3 @@
-# IT202-011
+1. IT 202 - Internet Applications Section 011
+2. Karnveer Singh 
+3. I am a double major student in Computer Science and Information Technology. This is my second year and fourth semester at NJIT. I was able to take two classes in the summer semester thus making this one my fourth semester. My programming experience consists of knowledge in Python, Java, HTML & CSS. I am also an e-board member of the Google Developer Student Club at NJIT and I look forward to learning much more in this class. 
