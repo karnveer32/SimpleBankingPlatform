@@ -12,7 +12,7 @@ function processArray($arr) {
         if($arr[$i]%2!=0)
         echo$arr[$i]." ";
     }
-
+    
 }
 echo "Problem 1: Odd Output<br>";
 ?>

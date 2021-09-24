@@ -11,7 +11,7 @@ function bePositive($arr) {
     {
         echo abs($arr[$x]). " ";
     }
-
+    
 }
 echo "Problem 3: Be Positive<br>";
 ?>
