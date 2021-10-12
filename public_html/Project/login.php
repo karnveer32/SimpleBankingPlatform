@@ -29,23 +29,23 @@ require(__DIR__."/../../partials/nav.php");?>
      //TODO 3: validate/use
      $errors = [];
      if(empty($email)){
-        array_push($errors, "Email must be set");
+        flash("Email must be set");
      }
      //sanitize
      //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
      $email = sanitize_email($email);
      //validate
      if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        array_push($errors, "Invalid email address");
+        flash("Invalid email address");
      }
      if(empty($password)){
-         array_push($errors, "Password must be set");
+         flash("Password must be set");
      }
      if(strlen($password) < 8){
-         array_push($errors, "Password must be 8 or more characters");
+         flash("Password must be 8 or more characters");
      }
      if(count($errors) > 0){
-         echo "<pre>" . var_export($errors, true) . "</pre>";
+         flash("<pre>" . var_export($errors, true) . "</pre>");
      }
      else{
          //TODO 4
@@ -66,25 +66,26 @@ require(__DIR__."/../../partials/nav.php");?>
                     unset($user["password"]);
                     if(password_verify($password, $hash))
                     {
-                        echo "Welcome, $email";
+                        flash("Welcome, $email");
                         $_SESSION["user"]=$user;
                         die(header("Location:home.php"));
                     }
                     else
                     {
-                        echo "Invalid password";
+                        flash("Invalid password");
                     }
                 }
                  else
                  {
-                    echo "Invalid email";
+                    flash("Invalid email");
                  }  
             } 
         }
         catch (Exception $e)
         {
-            echo "<pre>" . var_export($e, true) . "</pre>";
+            flash("<pre>" . var_export($e, true) . "</pre>");
         }
      }
- }
+}
+require(__DIR__. "/../../partials/flash.php");
 ?>
