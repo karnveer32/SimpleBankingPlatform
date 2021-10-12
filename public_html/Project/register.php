@@ -7,6 +7,10 @@ require(__DIR__ ."/../../partials/nav.php");
 <input type="email" name="email" required />
 </div>
 <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" required maxlength="30" />
+</div>
+<div>
 <label for="pw">Password</label>
 <input type="password" id="pw" name="password" required minlength="8" />
 </div>
@@ -30,6 +34,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm"
     //get the email key from $_POST, default to "" if not set, and return the value 
     $email = se($_POST, "email","",false);
     //same as above but for password and confirm
+    $username = se($_POST, "username","",false);
     $password = se($_POST, "password","",false);
     $confirm = se($_POST, "confirm","",false);
     //TODO 3: validate/use
@@ -73,7 +78,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm"
         $stmt = $db->prepare("INSERT INTO Users (email,password) VALUES (:email, :password)");
         try
         {
-            $stmt->execute([":email" => $email, ":password" => $hash]);
+            $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
             flash("You've been registered!");
         }
         catch(Exception $e)
@@ -81,6 +86,10 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm"
             flash("There was a problem registering");
             flash("<pre>" . var_export($e, true) . "</pre>");
         }
+    }
+    if(!preg_match('/^[a-z0-9_-]{3,30}$/', $username))
+    {
+        flash("Invalid username, must be alphanumeric and only contain");
     }
 }
 require(__DIR__. "/../../partials/flash.php");
