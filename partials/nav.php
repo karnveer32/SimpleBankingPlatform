@@ -13,7 +13,7 @@ if (($localWorks && $domain == "localhost") || $domain != "localhost") {
         "lifetime" => 60 * 60,
         "path" => "/Project",
         //"domain" => $_SERVER["HTTP_HOST"] || "localhost",
-        "domain" => $domain, 
+        "domain" => $domain,
         "secure" => true,
         "httponly" => true,
         "samesite" => "lax"
