@@ -1,3 +1,8 @@
+<canvas id="canvas" width="600" height="400" tabindex="1"></canvas>
+<button onclick="window.location.reload()">
+Restart Button</button>
+
+<script>
 // Arcade Shooter game
 
 // Get a reference to the canvas DOM element
@@ -6,13 +11,15 @@ var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
 // Create an object representing a square on the canvas
-function makeSquare(x, y, length, speed) {
+function makeSquare(x, y, length, speed, color) {
   return {
     x: x,
     y: y,
     l: length,
     s: speed,
+    c: color,
     draw: function() {
+        context.fillStyle=this.c;
       context.fillRect(this.x, this.y, this.l, this.l);
     }
   };
@@ -29,7 +36,9 @@ var space = false;
 // Is a bullet already on the canvas?
 var shooting = false;
 // The bulled shot from the ship
-var bullet = makeSquare(0, 0, 10, 10);
+// CHANGED THIS UP A LITTLE 
+var red  = "red"
+var bullet = makeSquare(0,0,10,10,10,red);
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
@@ -40,8 +49,10 @@ function makeEnemy() {
   var enemyX = canvas.width;
   var enemySize = Math.round((Math.random() * 15)) + 15;
   var enemyY = Math.round(Math.random() * (canvas.height - enemySize * 2)) + enemySize;
-  var enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed;
-  enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed));
+  var enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed; 
+  //TODO Pass random color to makesquare
+  var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+  enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed, randomColor));
 }
 
 // Check if number a is in the range b to c (exclusive)
@@ -156,7 +167,7 @@ function draw() {
     if (enemy.x < 0) {
       gameOver = true;
     }
-    context.fillStyle = '#00FF00';
+    //context.fillStyle = '#00FF00';
     enemy.draw();
   });
   // Collide the ship with enemies
@@ -226,4 +237,4 @@ function draw() {
 // Start the game
 menu();
 canvas.focus();
-
+</script>
