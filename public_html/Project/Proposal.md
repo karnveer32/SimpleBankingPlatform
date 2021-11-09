@@ -91,10 +91,12 @@
     
     - [ ] \(mm/dd/yyyy of completion) Any output messages/errors should be "user friendly" 
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
+        - Status: Completed <!--DONE-->
         - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
         - Pull Requests
         - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/20
+          - https://github.com/karnveer32/IT202-011/pull/23 
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
