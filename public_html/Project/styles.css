@@ -1,9 +1,10 @@
 .alert-success {
-    background-color: green
+    background-color: green;
 }
 
 .alert-warning {
     background-color: yellow;
+    color: black;
 }
 
 .alert-danger {
@@ -13,9 +14,8 @@
 .alert-info {
     background-color: teal;
 }
-nav li{display: inline; background-color: #35424a;}
+nav li{display: inline; background-color: #3d4c55;}
 nav li a{color: white}
-input{border-radius: 50%;}
 body{
     background-color: #35424a;
     color: white
