@@ -1,8 +1,8 @@
-# Project Name: Project Name: Simple Bank
+# Project Name: Simple Bank
 ## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
-## Github Link: (Prod Branch of Project Folder)
-## Project Board Link: 
-## Website Link: (Heroku Prod of Project folder)
+## Github Link: https://github.com/karnveer32/IT202-011/tree/prod/public_html/Project
+## Project Board Link: https://github.com/karnveer32/IT202-011/projects/1
+## Website Link: https://ks38-prod.herokuapp.com/Project/login.php
 ## Your Name: Karnveer Singh 
 
 <!--
@@ -25,10 +25,12 @@
 - Milestone 1
     - [ ] \(mm/dd/yyyy of completion) User will be able to register a new account
     -  List of Evidence of Feature Completion
-        - Status: Completed <!--(HAVE TO FINISH BELOW PARTS)-->
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/register.php
         - Pull Requests
-          - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/19
+          - https://github.com/karnveer32/IT202-011/pull/39
+          - https://github.com/karnveer32/IT202-011/pull/66
         - Screenshots
           - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -36,10 +38,12 @@
    
     - [ ] \(mm/dd/yyyy of completion) User will be able to log to their account (given they enter the correct credentials)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/19
+          - https://github.com/karnveer32/IT202-011/pull/39
+          - https://github.com/karnveer32/IT202-011/pull/55
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -47,10 +51,10 @@
 
     - [ ] \(mm/dd/yyyy of completion) User will be able to logout
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/19
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -58,10 +62,11 @@
 
     - [ ] \(mm/dd/yyyy of completion) Basic Security rules implemented 
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/43 
+          - https://github.com/karnveer32/IT202-011/pull/48
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -69,10 +74,11 @@
     
     - [ ] \(mm/dd/yyyy of completion) Basic roles implemented 
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/43 
+          - https://github.com/karnveer32/IT202-011/pull/48
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -80,10 +86,13 @@
     
     - [ ] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled 
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/62
+          - https://github.com/karnveer32/IT202-011/pull/59
+          - https://github.com/karnveer32/IT202-011/pull/56
+          - https://github.com/karnveer32/IT202-011/pull/47
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -94,7 +103,6 @@
         - Status: Completed <!--DONE-->
         - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
         - Pull Requests
-        - PR link #1 (repeat as necessary)
           - https://github.com/karnveer32/IT202-011/pull/20
           - https://github.com/karnveer32/IT202-011/pull/23 
         - Screenshots
@@ -104,10 +112,10 @@
 
     - [ ] \(mm/dd/yyyy of completion) User will be able to see their profile  
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/profile.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/39
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
@@ -115,10 +123,10 @@
 
     - [ ] \(mm/dd/yyyy of completion) User will be able to edit their profile 
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed <!--DONE-->
+        - Direct Link: https://ks38-prod.herokuapp.com/Project/profile.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+          - https://github.com/karnveer32/IT202-011/pull/39
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
