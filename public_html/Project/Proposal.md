@@ -57,7 +57,7 @@
           - https://github.com/karnveer32/IT202-011/pull/19
         - Screenshots: 
           - <img width="1269" alt="Screen Shot 2021-11-09 at 3 38 15 PM" src="https://user-images.githubusercontent.com/81723756/141337054-d4b10f58-f8a1-402d-b364-0e9aae5f8654.png">
-          - <img width="1309" alt="Screen Shot 2021-11-09 at 8 06 32 PM" src="https://user-images.githubusercontent.com/81723756/141337083-c575c3ee-3d42-403a-a7ec-a1e5e8cacca1.png">
+          - <img width="887" alt="Screen Shot 2021-11-11 at 3 34 00 PM" src="https://user-images.githubusercontent.com/81723756/141365286-efbd387b-3191-45b9-8e14-adfd6b2aaff8.png">
           - Description: You can see one picture of the Home page and the second picure is the login page which is the direct page it forwards you to when one clicks the logout page
 
           
