@@ -31,7 +31,10 @@
           - https://github.com/karnveer32/IT202-011/pull/19
           - https://github.com/karnveer32/IT202-011/pull/39
           - https://github.com/karnveer32/IT202-011/pull/66
-   
+        - Screenshots: 
+          - <img width="1312" alt="Screen Shot 2021-11-09 at 8 13 07 PM" src="https://user-images.githubusercontent.com/81723756/141336788-e90cd843-cb5a-461a-823e-8025797469fe.png">
+          - Description: You can see a image of the register page where one will be able to register a account
+
    
     - [ ] \(11/09/2021) User will be able to log to their account (given they enter the correct credentials)
     -  List of Evidence of Feature Completion
@@ -41,7 +44,10 @@
           - https://github.com/karnveer32/IT202-011/pull/19
           - https://github.com/karnveer32/IT202-011/pull/39
           - https://github.com/karnveer32/IT202-011/pull/55
- 
+        - Screenshots:
+          - <img width="1269" alt="Screen Shot 2021-11-09 at 3 38 15 PM" src="https://user-images.githubusercontent.com/81723756/141336908-468a5943-8551-4faa-8cdf-a40d26f32a38.png">
+          - Description: You can see a picture of a successful login with a welcome message.
+
 
     - [ ] \(11/09/2021) User will be able to logout
     -  List of Evidence of Feature Completion
@@ -49,8 +55,12 @@
         - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
         - Pull Requests
           - https://github.com/karnveer32/IT202-011/pull/19
-          
+        - Screenshots: 
+          - <img width="1269" alt="Screen Shot 2021-11-09 at 3 38 15 PM" src="https://user-images.githubusercontent.com/81723756/141337054-d4b10f58-f8a1-402d-b364-0e9aae5f8654.png">
+          - <img width="1309" alt="Screen Shot 2021-11-09 at 8 06 32 PM" src="https://user-images.githubusercontent.com/81723756/141337083-c575c3ee-3d42-403a-a7ec-a1e5e8cacca1.png">
+          - Description: You can see one picture of the Home page and the second picure is the login page which is the direct page it forwards you to when one clicks the logout page
 
+          
     - [ ] \(11/09/2021) Basic Security rules implemented 
     -  List of Evidence of Feature Completion
         - Status: Completed <!--DONE-->
@@ -58,7 +68,11 @@
         - Pull Requests
           - https://github.com/karnveer32/IT202-011/pull/43 
           - https://github.com/karnveer32/IT202-011/pull/48
-
+        - Screenshots: 
+          - <img width="206" alt="Screen Shot 2021-11-09 at 8 47 56 PM" src="https://user-images.githubusercontent.com/81723756/141337179-e5bd5ff2-52a3-4992-b2ba-62dad195ae57.png">
+          - <img width="562" alt="Screen Shot 2021-11-09 at 8 45 32 PM" src="https://user-images.githubusercontent.com/81723756/141337196-090d0421-c5d3-4e55-b821-b10cca1a4b35.png">
+          - <img width="651" alt="Screen Shot 2021-11-09 at 8 45 13 PM" src="https://user-images.githubusercontent.com/81723756/141337213-182184ce-273b-4c48-9f7b-15e7be9cfbe4.png">
+          - Description: Here you can see pictures of the admin tables, the sql files, and the table files. I did not show the actual the tables with the data to prevent a leak of info
     
     - [ ] \(11/09/2021) Basic roles implemented 
     -  List of Evidence of Feature Completion
@@ -67,7 +81,11 @@
         - Pull Requests
           - https://github.com/karnveer32/IT202-011/pull/43 
           - https://github.com/karnveer32/IT202-011/pull/48
-
+        - Screenshots: 
+          - <img width="206" alt="Screen Shot 2021-11-09 at 8 47 56 PM" src="https://user-images.githubusercontent.com/81723756/141337179-e5bd5ff2-52a3-4992-b2ba-62dad195ae57.png">
+          - <img width="562" alt="Screen Shot 2021-11-09 at 8 45 32 PM" src="https://user-images.githubusercontent.com/81723756/141337196-090d0421-c5d3-4e55-b821-b10cca1a4b35.png">
+          - <img width="651" alt="Screen Shot 2021-11-09 at 8 45 13 PM" src="https://user-images.githubusercontent.com/81723756/141337213-182184ce-273b-4c48-9f7b-15e7be9cfbe4.png">
+           - Description: Here you can see pictures of the admin tables, the sql files, and the table files. I did not show the actual the tables with the data to prevent a leak of info
     
     - [ ] \(11/09/2021) Site should have basic styles/theme applied; everything should be styled 
     -  List of Evidence of Feature Completion
@@ -78,7 +96,10 @@
           - https://github.com/karnveer32/IT202-011/pull/59
           - https://github.com/karnveer32/IT202-011/pull/56
           - https://github.com/karnveer32/IT202-011/pull/47
-
+        - Screenshots: 
+          - <img width="1309" alt="Screen Shot 2021-11-09 at 8 06 32 PM" src="https://user-images.githubusercontent.com/81723756/141337409-50a66c06-a48d-4d12-b404-1f1595bb4b8c.png">
+          - Description: Here you can see pictures of the login page and the different styling that I incorporated like the background color, the nav bar color, the text color and others. 
+    
     
     - [ ] \(11/09/2021) Any output messages/errors should be "user friendly" 
     -  List of Evidence of Feature Completion
@@ -87,6 +108,10 @@
         - Pull Requests
           - https://github.com/karnveer32/IT202-011/pull/20
           - https://github.com/karnveer32/IT202-011/pull/23 
+        - Screenshots: 
+          - <img width="1287" alt="Screen Shot 2021-11-09 at 3 36 55 PM" src="https://user-images.githubusercontent.com/81723756/141337481-b0f7a74c-a1dd-454f-a0ed-892b826e1f52.png">
+          - <img width="1269" alt="Screen Shot 2021-11-09 at 3 38 15 PM" src="https://user-images.githubusercontent.com/81723756/141337498-4d88b803-f836-45c1-aee7-41079793daa4.png">
+          - Description: Here are two pictures that show some messages when trying differnet things. For the first one, it shows a message when the password is too short which says, "Use at least 8 characters." The second picture is a picture with the welcome message one receives after a successful login. 
 
 
     - [ ] \(11/09/2021) User will be able to see their profile  
@@ -95,6 +120,9 @@
         - Direct Link: https://ks38-prod.herokuapp.com/Project/profile.php
         - Pull Requests
           - https://github.com/karnveer32/IT202-011/pull/39
+        - Screenshots: 
+          - <img width="1300" alt="Screen Shot 2021-11-09 at 8 18 01 PM" src="https://user-images.githubusercontent.com/81723756/141337629-b8fcddc1-7cd0-420a-ac2d-e4c49d172c8d.png">
+          - Description: Here is a picture of the profile page of a sample account that I created
 
 
     - [ ] \(11/09/2021) User will be able to edit their profile 
@@ -103,11 +131,15 @@
         - Direct Link: https://ks38-prod.herokuapp.com/Project/profile.php
         - Pull Requests
           - https://github.com/karnveer32/IT202-011/pull/39
+        - Screenshots: 
+          - <img width="1300" alt="Screen Shot 2021-11-09 at 8 18 01 PM" src="https://user-images.githubusercontent.com/81723756/141337629-b8fcddc1-7cd0-420a-ac2d-e4c49d172c8d.png">
+          - Description: Here is a picture of the profile page of a sample account that I created. One can also change any information here as well. 
+
 
 - Milestone 2
 - Milestone 3
 - Milestone 4
-### Intructions
+### Intructions 
 #### Don't delete this
 1. Pick one project type
 2. Create a proposal.md file in the root of your project directory of your GitHub repository
