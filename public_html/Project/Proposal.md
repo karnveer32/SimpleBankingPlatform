@@ -137,15 +137,15 @@
 
 
 - Milestone 2
-- [ ] \(mm/dd/yyyy of completion) Create the Accounts table (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
+- [ ] \(11/23/2021) Create the Accounts table (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed 
+    - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/karnveer32/IT202-011/pull/103
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - <img width="1118" alt="Screen Shot 2021-11-23 at 11 56 02 AM" src="https://user-images.githubusercontent.com/81723756/143069241-62d24841-c0a6-4ee6-97e1-9faaa7e955d1.png">
+      - Description: Here is a picture of the accounts table in database after it was created. 
 
 
 - [ ] \(mm/dd/yyyy of completion) Project setup steps
