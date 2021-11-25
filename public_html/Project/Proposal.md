@@ -170,15 +170,15 @@
         - Screenshot #1 description explaining what you're trying to show
 
 
-- [ ] \(mm/dd/yyyy of completion) Dashboard page
+- [ ] \(11/25/2021) Dashboard page
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/karnveer32/IT202-011/pull/111
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - <img width="1249" alt="Screen Shot 2021-11-25 at 1 11 11 PM" src="https://user-images.githubusercontent.com/81723756/143486697-65ebbbe5-e18f-44ca-9436-e1f3af293860.png">
+      - Description: The picture here shows the dashboard page which shows up on the home page after login. You can see links that redirect the client to other pages that have specific functions. For instance, the create account page will redirect the client to page where they can create an account. At this moment, only the edit profile link can redirect the client to another page solely because I have not reached and completed the issues pertaining to the other links.
 
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to create a checking account
