@@ -148,15 +148,19 @@
       - Description: Here is a picture of the accounts table in database after it was created. 
 
 
-- [ ] \(mm/dd/yyyy of completion) Project setup steps
+- [ ] \(11/25/2021) Project setup steps
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/karnveer32/IT202-011/pull/119
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1: 
+        - <img width="1036" alt="Screen Shot 2021-11-25 at 2 20 34 PM" src="https://user-images.githubusercontent.com/81723756/143492606-b94a142b-0ee7-4605-8275-8e17a22821ed.png">
+        - Description: In this picture, you can see the world account in the accounts table. \
+      - Screenshot #2: 
+        - <img width="887" alt="Screen Shot 2021-11-25 at 2 21 16 PM" src="https://user-images.githubusercontent.com/81723756/143492720-6c59e56a-0263-4557-82aa-539c41c8a955.png">
+        - Description: In this picture, you can see the system user account in the users table.
 
 
 - [ ] \(mm/dd/yyyy of completion) Create the Transactions table (see reference below)
