@@ -163,15 +163,15 @@
         - Description: In this picture, you can see the system user account in the users table.
 
 
-- [ ] \(mm/dd/yyyy of completion) Create the Transactions table (see reference below)
+- [ ] \(11/25/2021) Create the Transactions table (see reference below)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/karnveer32/IT202-011/pull/125
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - <img width="1080" alt="Screen Shot 2021-11-25 at 2 35 21 PM" src="https://user-images.githubusercontent.com/81723756/143493416-651ad181-3712-4138-a58d-225dbd5b71f8.png">
+      - Description: In this picture, you can see the transactions table that was created in the database of VS Code
 
 
 - [ ] \(11/25/2021) Dashboard page
