@@ -1,2 +1,2 @@
-INSERT INTO Transactions (id, account_number, routing_number, user_id, balance, account_type)
+INSERT INTO Accounts (id, account_number, user_id, account_type, balance)
 VALUES (-1, "000000000000", -1, "world");
