@@ -154,9 +154,10 @@
     - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
     - Pull Requests
       - https://github.com/karnveer32/IT202-011/pull/119
+      - https://github.com/karnveer32/IT202-011/pull/131
     - Screenshots
       - Screenshot #1: 
-        - <img width="1036" alt="Screen Shot 2021-11-25 at 2 20 34 PM" src="https://user-images.githubusercontent.com/81723756/143492606-b94a142b-0ee7-4605-8275-8e17a22821ed.png">
+        - <img width="1022" alt="Screen Shot 2021-11-29 at 10 45 24 AM" src="https://user-images.githubusercontent.com/81723756/143898562-f9f1a3aa-03cf-4441-af1e-03d2abd57ba1.png">
         - Description: In this picture, you can see the world account in the accounts table. \
       - Screenshot #2: 
         - <img width="887" alt="Screen Shot 2021-11-25 at 2 21 16 PM" src="https://user-images.githubusercontent.com/81723756/143492720-6c59e56a-0263-4557-82aa-539c41c8a955.png">
@@ -169,8 +170,9 @@
     - Direct Link: https://ks38-prod.herokuapp.com/Project/login.php
     - Pull Requests
       - https://github.com/karnveer32/IT202-011/pull/125
+      - https://github.com/karnveer32/IT202-011/pull/131
     - Screenshots
-      - <img width="1080" alt="Screen Shot 2021-11-25 at 2 35 21 PM" src="https://user-images.githubusercontent.com/81723756/143493416-651ad181-3712-4138-a58d-225dbd5b71f8.png">
+      - <img width="1041" alt="Screen Shot 2021-11-29 at 10 43 52 AM" src="https://user-images.githubusercontent.com/81723756/143898342-224f73cf-b307-4d6f-83f9-260c484ecad7.png">
       - Description: In this picture, you can see the transactions table that was created in the database of VS Code
 
 
