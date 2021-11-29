@@ -1,13 +1,12 @@
-CREATE TABLE IF NOT EXISTS `Transactions`
-(
-    `id` int auto_increment PRIMARY KEY,
-    `account_number` varchar(12) unique,
-    `routing_number` varchar(12) unique, 
-    `user_id` int, 
-    `balance` bigint default 0,
-    `created` timestamp default current_timestamp,
-    `modified` timestamp default current_timestamp on update current_timestamp,
-    `account_type` varchar(20),
-    FOREIGN KEY (`user_id`) REFERENCES Users(`id`),
-    check (LENGTH(`account_number`) = 12)
+CREATE TABLE IF NOT EXISTS Transactions(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+    src int,
+    dest int,
+    diff int,
+    reason varchar(15) not null COMMENT 'The type of transaction that occurred',
+    memo varchar(240) default null COMMENT  'Any extra details to attach to the transaction',
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (src) REFERENCES Accounts(id),
+FOREIGN KEY(dest) REFERENCES Accounts(id),
+constraint ZeroTransferNotAllowed CHECK(diff != 0)
 )
