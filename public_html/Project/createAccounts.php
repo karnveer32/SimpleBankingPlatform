@@ -62,7 +62,8 @@ require(__DIR__ . "/../../partials/flash.php");
 //require(__DIR__ . "/sql/008_insert_system_accounts.sql");
 //Checking submit button
 get_or_create_account();
-
+change_bills(5, "Account Created", $src = -1, $dest = -1, $memo = "Initial Deposit");
+refresh_account_balance();
 //if(isset($_POST["submit"]) && $_POST["submit"]!=""){ 
         //$id=$POST[2];                   
         //$user_id=$POST[2];

@@ -142,7 +142,7 @@ function get_or_create_account()
     if (is_logged_in()) {
         //let's define our data structure first
         //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
-        $account = ["id" => -1, "account_num" => false, "balance" => 5];
+        $account = ["id" => -1, "account_num" => false, "balance" => 0];
         //this should always be 0 or 1, but being safe
         $query = "SELECT id, account_number, balance from Accounts where user_id = :uid LIMIT 1";
         $db = getDB();
@@ -226,6 +226,39 @@ function refresh_account_balance()
             get_or_create_account(); //refresh session data
         } catch (PDOException $e) {
             flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
+
+function change_bills($bills, $reason, $src = -1, $dest = -1, $memo = "")
+{
+    //I'm choosing to ignore the record of 0 point transactions
+    if ($bills > 0) {
+        $query = "INSERT INTO Transactions (src, dest, diff, reason, memo) 
+            VALUES (:acs, :acd, :pc, :r,:m), 
+            (:acs2, :acd2, :pc2, :r, :m)";
+        //I'll insert both records at once, note the placeholders kept the same and the ones changed.
+        $params[":acs"] = $src;
+        $params[":acd"] = $dest;
+        $params[":r"] = $reason;
+        $params[":m"] = $memo;
+        $params[":pc"] = ($bills * -1);
+
+        $params[":acs2"] = $dest;
+        $params[":acd2"] = $src;
+        $params[":pc2"] = $bills;
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute($params);
+            //Only refresh the balance of the user if the logged in user's account is part of the transfer
+            //this is needed so future features don't waste time/resources or potentially cause an error when a calculation
+            //occurs without a logged in user
+            if ($src == get_user_account_id() || $dest == get_user_account_id()) {
+                refresh_account_balance();
+            }
+        } catch (PDOException $e) {
+            flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
         }
     }
 }
