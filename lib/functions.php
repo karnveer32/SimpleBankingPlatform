@@ -199,9 +199,6 @@ function get_or_create_account()
     }
 }
 
-
-
-//snippet from my functions.php
 function get_account_balance()
 {
     if (is_logged_in() && isset($_SESSION["user_id"]["account_number"])) {
@@ -209,6 +206,7 @@ function get_account_balance()
     }
     return 0;
 }
+
 function get_user_account_id()
 {
     if (is_logged_in() && isset($_SESSION["user_id"]["account_number"])) {
@@ -217,4 +215,18 @@ function get_user_account_id()
     return 0;
 }
 
+function refresh_account_balance()
+{
+    if (is_logged_in()) {
+        $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(diff), 0) from Transactions WHERE src = :src) where id = :src";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":src" => get_user_account_id()]);
+            get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
 ?>
