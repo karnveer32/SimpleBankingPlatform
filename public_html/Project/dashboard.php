@@ -9,8 +9,8 @@ die(header("Location: home.php"));
                 <ul>
                     <li><a href="createAccount.php">Create Account</a></li>
                     <li><a href="accounts.php">My Accounts</a></li>
-                    <li><a href="deposit.php">Deposit</a></li>
-                    <li><a href="withdraw.php">Withdraw</a></li>
+                    <li><a href="#">Deposit</a></li>
+                    <li><a href="#">Withdraw</a></li>
                     <li><a href="#">Transfer Funds</a></li>
                     <li><a href="profile.php"></a></li>
                 </ul>
