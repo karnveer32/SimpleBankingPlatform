@@ -142,7 +142,7 @@ function get_or_create_account()
     if (is_logged_in()) {
         //let's define our data structure first
         //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
-        $account = ["id" => -1, "account_num" => false, "balance" => 5];
+        $account = ["id" => -1, "account_num" => false, "balance" => 0];
         //this should always be 0 or 1, but being safe
         $query = "SELECT id, account_number, balance from Accounts where user_id = :uid LIMIT 1";
         $db = getDB();
@@ -187,6 +187,9 @@ function get_or_create_account()
                 $account["id"] = $result["id"];
                 $account["account_num"] = $result["account_number"];
                 $account["balance"] = $result["balance"];
+                //return $result["id"];
+                return $result["account_number"];
+                //return $result["balance"];
             }
         } catch (PDOException $e) {
             flash("Technical error: " . var_export($e->errorInfo, true), "danger");
