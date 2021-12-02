@@ -215,15 +215,14 @@ function get_user_account_id()
     return 0;
 }
 
-function refresh_account_balance()
+function refresh_account_balance($aid)
 {
     if (is_logged_in()) {
         $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(diff), 0) from Transactions WHERE src = :src) where id = :src";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
-            $stmt->execute([":src" => get_user_account_id()]);
-            get_or_create_account(); //refresh session data
+            $stmt->execute([":src" => $aid]);
         } catch (PDOException $e) {
             flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
         }
@@ -254,9 +253,8 @@ function change_bills($bills, $reason, $src = -1, $dest = -1, $memo = "")
             //Only refresh the balance of the user if the logged in user's account is part of the transfer
             //this is needed so future features don't waste time/resources or potentially cause an error when a calculation
             //occurs without a logged in user
-            if ($src == get_user_account_id() || $dest == get_user_account_id()) {
-                refresh_account_balance();
-            }
+            refresh_account_balance($src);
+            refresh_account_balance($dest);
         } catch (PDOException $e) {
             flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
         }

@@ -1,50 +1,54 @@
 <?php
-require_once(__DIR__ . "/../../lib/db.php");
-require_once(__DIR__ . "/../../lib/functions.php");
 require(__DIR__ . "/../../partials/nav.php");
-//$name = se($_POST, "name", "", false);
-//$pass = (mt_rand(000000000000,999999999999));
-$account_number = (mt_rand(000000000000, 999999999999));
-$account = "checking";
-/*if(isset($POST["balance"]))
-{
-        $balance = $POST["balance"];
-} */
 
-//$db = getDB();
-//$stmt = $db->prepare("INSERT INTO Accounts (id, account_number, user_id, account_type) VALUES(-1, $pass, -1, checking)");
+
+if (isset($_POST["account_type"]) && isset($_POST["deposit"])) {
+	$db = getDB();
+    try {
+        $user_id = get_user_id();
+        $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type, user_id) VALUES(null, :t, :uid)");
+        error_log(var_export($_POST, true));
+        $stmt->execute([":t" => $_POST["account_type"], ":uid" => $user_id]);
+        $aid = $db->lastInsertId();
+        $account_number = str_pad($aid, 12, "0", STR_PAD_LEFT);
+        $stmt = $db->prepare("UPDATE Accounts set account_number = :a WHERE id = :id");
+        $stmt->execute([":a" => $account_number, ":id" => $aid]);
+        //TODO transaction and refresh for deposit value if >= 5
+        $deposit = (int)se($_POST,"deposit", 0, false);
+        if($deposit >=5) {
+			//assumes balance, transfer type, src, dest, memo
+            change_bills($deposit, "Deposit", -1, $aid, "Initial Deposit" );
+			refresh_account_balance($aid);//TODO likely need to update/implement this function
+			/*
+				basically would do "UPDATE Accounts set balance = (SELECT IFNULL(SUM(BalanceChange), 0) FROM Transactions where src = :aid) WHERE id = :aid"
+			*/
+        }
+        flash("Welcome! Your account has been created successfully", "success");
+        die(header("Location: accounts.php"));
+    } catch (PDOException $e) {
+        error_log("Account create error: " . var_export($e, true));
+		flash("There was a problem creating the account","danger");
+    }
+}
 ?>
 
 <h1>Account Creation</h1>
-<form onsubmit="return validate(this)" action="accounts.php" method="POST">
-    <!-- <div class="mb-3">
-            <label class="form-label" for="Name">Name: </label>
-            <input class="form-control" type="name" id="" name="name"
-            action="009_create_table_transactions.sql"
-            onsubmit="return validate(this)" 
-    </div> -->
-
-   <!--- <div class="mb-3">
-            <label class="form-label" for="account_number">Auto-Generated Account Number: </label>
-            <input class="form-control" type="account_number" id="account_number" name="account_number" 
-            required value = "<?php se($account_number);?>"/>
-    </div> -->
-
+<form onsubmit="return validate(this)"  method="POST">
     <div class="mb-3">
-            <label class="form-label" for="account_type">Account Type: Checking</label>
+        <label class="form-label" for="account_type">Account Type</label>
+		<select name="account_type">
+			<option value="checking">Checking</option>
+		</select>
     </div>
 
     <div class="mb-3">
-            <label class="form-label" for="balance">Deposit Amount: </label>
-            <input type="number" id="balance" name="balance" min="5" />
+        <label class="form-label" for="balance">Deposit Amount: </label>
+        <input type="number" id="balance" name="deposit" min="5" />
     </div>
     <input type="submit" class="mt-3 btn btn-primary" value="Create Account" />
-
 </form>
-    <!--Create a submit button that adds the following info to 009 table and updates it.
-    After submit is hit, flash a message that says, account created. -->
 
- <script>
+<script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
@@ -55,29 +59,3 @@ $account = "checking";
 
 <?php
 require(__DIR__ . "/../../partials/flash.php");
-//$accounts = se($accounts, "balance", "", false);
-//$account = "checking";
-//$id=2;
-//$user_id=2;
-//require(__DIR__ . "/sql/008_insert_system_accounts.sql");
-//Checking submit button
-get_or_create_account();
-change_bills(5, "Account Created", $src = -1, $dest = -1, $memo = "Initial Deposit");
-refresh_account_balance();
-//if(isset($_POST["submit"]) && $_POST["submit"]!=""){ 
-        //$id=$POST[2];                   
-        //$user_id=$POST[2];
-
-//if (true) {
-        //TODO 4
-        //$hash = password_hash($password, PASSWORD_BCRYPT);
-        //$db = getDB();
-        //$stmt = $db->prepare("INSERT INTO Accounts (id, account_number, user_id, balance account_type) VALUES(:id, :account_number, :user_id, :balance, :account_type)");
-        //try {
-            //$stmt->execute([":id" => $id, ":account_number" => $pass, ":user_id" => $user_id, ":account_type" => $account, ":balance" => $balance]);
-            //flash("Successfully created!");
-        //} catch (Exception $e) {
-            //users_check_duplicate($e->errorInfo);
-        //}
-    //}}
-?>
