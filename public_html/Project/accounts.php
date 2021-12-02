@@ -10,6 +10,7 @@ require_once(__DIR__ . "/../../partials/flash.php");
 
 $pass = get_or_create_account();
 $balancepass = get_or_create_account2();
+die(header("Location: transactionsHistory.php"));
 ?>
 
 
