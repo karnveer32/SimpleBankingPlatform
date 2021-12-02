@@ -202,6 +202,71 @@ function get_or_create_account()
     }
 }
 
+function get_or_create_account2()
+{
+    if (is_logged_in()) {
+        //let's define our data structure first
+        //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
+        $account = ["id" => -1, "account_num" => false, "balance" => 0];
+        //this should always be 0 or 1, but being safe
+        $query = "SELECT id, account_number, balance from Accounts where user_id = :uid LIMIT 1";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":uid" => get_user_id()]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!$result) {
+                //account doesn't exist, create it
+                $created = false;
+                //we're going to loop here in the off chance that there's a duplicate
+                //it shouldn't be too likely to occur with a length of 12, but it's still worth handling such a scenario
+
+                //you only need to prepare once
+                $query = "INSERT INTO Accounts (account_number, user_id) VALUES (:an, :uid)";
+                $stmt = $db->prepare($query);
+                $user_id = get_user_id(); //caching a reference
+                $account_number = "";
+                while (!$created) {
+                    try {
+                        $account_number = (mt_rand(000000000000, 999999999999));
+                        $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
+                        $created = true; //if we got here it was a success, let's exit
+                        flash("Welcome! Your account has been created successfully", "success");
+                    } catch (PDOException $e) {
+                        $code = se($e->errorInfo, 0, "00000", false);
+                        //if it's a duplicate error, just let the loop happen
+                        //otherwise throw the error since it's likely something looping won't resolve
+                        //and we don't want to get stuck here forever
+                        if (
+                            $code !== "23000"
+                        ) {
+                            throw $e;
+                        }
+                    }
+                }
+                //loop exited, let's assign the new values
+                $account["id"] = $db->lastInsertId();
+                $account["account_num"] = $account_number;
+            } else {
+                //$account = $result; //just copy it over
+                $account["id"] = $result["id"];
+                $account["account_num"] = $result["account_number"];
+                $account["balance"] = $result["balance"];
+                //return $result["id"];
+                //return $result["account_number"];
+                return $result["balance"];
+            }
+        } catch (PDOException $e) {
+            flash("Technical error: " . var_export($e->errorInfo, true), "danger");
+        }
+        $_SESSION["user"]["account_number"] = $account; //storing the account info as a key under the user session
+        //Note: if there's an error it'll initialize to the "empty" definition around line 161
+
+    } else {
+        flash("You're not logged in", "danger");
+    }
+}
+
 function get_account_balance()
 {
     if (is_logged_in() && isset($_SESSION["user_id"]["account_number"])) {
@@ -218,17 +283,49 @@ function get_user_account_id()
     return 0;
 }
 
-function refresh_account_balance()
+function refresh_account_balance($aid)
 {
     if (is_logged_in()) {
         $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(diff), 0) from Transactions WHERE src = :src) where id = :src";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
-            $stmt->execute([":src" => get_user_account_id()]);
-            get_or_create_account(); //refresh session data
+            $stmt->execute([":src" => $aid]);
         } catch (PDOException $e) {
             flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
         }
     }
 }
+
+function change_bills($bills, $reason, $src = -1, $dest = -1, $memo = "")
+{
+    //I'm choosing to ignore the record of 0 point transactions
+    if ($bills > 0) {
+        $query = "INSERT INTO Transactions (src, dest, diff, reason, memo) 
+            VALUES (:acs, :acd, :pc, :r,:m), 
+            (:acs2, :acd2, :pc2, :r, :m)";
+        //I'll insert both records at once, note the placeholders kept the same and the ones changed.
+        $params[":acs"] = $src;
+        $params[":acd"] = $dest;
+        $params[":r"] = $reason;
+        $params[":m"] = $memo;
+        $params[":pc"] = ($bills * -1);
+
+        $params[":acs2"] = $dest;
+        $params[":acd2"] = $src;
+        $params[":pc2"] = $bills;
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute($params);
+            //Only refresh the balance of the user if the logged in user's account is part of the transfer
+            //this is needed so future features don't waste time/resources or potentially cause an error when a calculation
+            //occurs without a logged in user
+            refresh_account_balance($src);
+            refresh_account_balance($dest);
+        } catch (PDOException $e) {
+            flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
+?>
