@@ -3,6 +3,8 @@
         <div class="mb-3">
             <nav style="text-align:center">
                 <ul style="list-style:none">
+                    <li><a href="createAccounts.php">Create Accounts</a></li>
+                    <li><a href="accounts.php">My Accounts</a></li>
                     <li><a href="#">Deposit</a></li>
                     <li><a href="#">Withdraw</a></li>
                     <li><a href="#">Transfer Funds</a></li>
