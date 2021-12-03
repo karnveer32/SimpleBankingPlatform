@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `Accounts`
     `balance` bigint default 0,
     `created` timestamp default current_timestamp,
     `modified` timestamp default current_timestamp on update current_timestamp,
-    `account_type` varchar(20),
+    `account_type` varchar(20) default "checking",
     FOREIGN KEY (`user_id`) REFERENCES Users(`id`),
     check (LENGTH(`account_number`) = 12)
 )
