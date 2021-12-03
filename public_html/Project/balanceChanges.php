@@ -4,6 +4,22 @@
     require_once(__DIR__ . "/../../lib/functions.php"); 
     require_once(__DIR__ . "/../../partials/flash.php");
     $acc=get_or_create_account(); 
+    $user_id=get_user_id();
+
+    $stmt = $db->prepare("SELECT account_number, balance FROM Accounts WHERE user_id = :uid LIMIT 10");
+    $result =[];
+    try{
+    $stmt -> execute([":uid" => $user_id]);
+    $r = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        if ($r) {
+            
+            $result = $r;
+        }
+    }
+    catch(PDOException $e){
+        flash("<pre>" . var_export($e, true). "</pre>");
+    }
+
 ?>
 
 
@@ -19,7 +35,9 @@
     <div class="mb-3">
         <label class="form-label" for="account_number">Account Number</label>
         <select name="account_number">
-			<option value=""><?php echo $acc?> </option>
+             <?php foreach ($result as $item) : ?>
+                <option value="<?php se($item, "account_number"); ?>"><?php se($item, "account_number"); ?></option>
+                <?php endforeach;?> 
         </select>
     </div>
 
@@ -43,13 +61,15 @@
     <div class="mb-4">
         <label class="form-label" for="account_number">Account Number</label>
         <select name="account_number">
-			<option value=""><?php echo $acc?> </option>
+			<<?php foreach ($result as $item) : ?>
+                <option value="<?php se($item, "account_number"); ?>"><?php se($item, "account_number"); ?></option>
+                <?php endforeach;?> 
         </select>
     </div>
 
     <div class="mb-4">
         <label class="form-label" for="balance">Withdraw Amount: </label>
-        <input type="number" id="balance" name="withdraw" max=""/>
+        <input type="number" id="balance" name="withdraw" min="0" max= <?php foreach ($result as $item) : se($item, "balance"); endforeach;?>/>
     </div>
     <input type="submit" class="mt-4 btn btn-primary" value="Withdraw" />
 </form>
