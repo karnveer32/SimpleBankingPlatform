@@ -130,6 +130,13 @@ function get_url($dest)
     return $BASE_PATH . $dest;
 }
 
+//snippet from my functions.php
+/**
+ * Will fetch the account of the logged in user, or create a new one if it doesn't exist yet.
+ * Exists here so it may be called on any desired page and not just login
+ * Will populate/refresh $_SESSION["user"]["account"] regardless.
+ * Make sure this is called after the session has been set
+ */
 function get_or_create_account()
 {
     if (is_logged_in()) {
@@ -289,7 +296,6 @@ function refresh_account_balance($aid)
         }
     }
 }
-
 
 function change_bills($bills, $reason, $src = -1, $dest = -1, $memo = "")
 {
