@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Transactions(
+CREATE TABLE IF NOT EXISTS Transacations(
     id int AUTO_INCREMENT PRIMARY KEY ,
     src int,
     dest int,
@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Transactions(
     reason varchar(15) not null COMMENT 'The type of transaction that occurred',
     memo varchar(240) default null COMMENT  'Any extra details to attach to the transaction',
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (src) REFERENCES Accounts(id),
-FOREIGN KEY(dest) REFERENCES Accounts(id),
-constraint ZeroTransferNotAllowed CHECK(diff != 0)
+    FOREIGN KEY (src) REFERENCES BGD_Accounts(id),
+    FOREIGN KEY(dest) REFERENCES BGD_Accounts(id),
+    constraint ZeroTransferNotAllowed CHECK(diff != 0)
 )
