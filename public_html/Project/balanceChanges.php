@@ -1,11 +1,9 @@
 <?php
     require(__DIR__ . "/../../partials/nav.php");
-    require_once(__DIR__ . "/../../lib/db.php");
-    require_once(__DIR__ . "/../../lib/functions.php"); 
-    require_once(__DIR__ . "/../../partials/flash.php");
     $acc=get_or_create_account(); 
     $user_id=get_user_id();
 
+    /*
     $stmt = $db->prepare("SELECT account_number, balance FROM Accounts WHERE user_id = :uid LIMIT 10");
     $result =[];
     try{
@@ -73,3 +71,103 @@
     </div>
     <input type="submit" class="mt-4 btn btn-primary" value="Withdraw" />
 </form>
+*/
+
+
+ini_set('display_errors',1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+function do_bank_action($account1, $account2, $amountChange, $reason){
+	require("config.php");
+	$conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+	$db = new PDO($conn_string, $username, $password);
+	$a1memo = "";//TODO get total of account 1
+	$a2memo = "";//TODO get total of account 2
+	$query = "INSERT INTO Transactions (src, dest, diff, reason, memo) 
+	VALUES(:p1a1, :p1a2, :p1change, :reason, :a1memo), 
+			(:p2a1, :p2a2, :p2change, :reason, :a2memo)";
+	
+	$stmt = $db->prepare($query);
+	$stmt->bindValue(":p1a1", $account1);
+	$stmt->bindValue(":p1a2", $account2);
+	$stmt->bindValue(":p1change", $amountChange);
+	$stmt->bindValue(":reason", $reason);
+	$stmt->bindValue(":a1memo", $a1memo);
+	//flip data for other half of transaction
+	$stmt->bindValue(":p2a1", $account2);
+	$stmt->bindValue(":p2a2", $account1);
+	$stmt->bindValue(":p2change", ($amountChange*-1));
+	$stmt->bindValue(":reason", $reason);
+	$stmt->bindValue(":a2memo", $a2memo);
+	$result = $stmt->execute();
+	echo var_export($result, true);
+	echo var_export($stmt->errorInfo(), true);
+	return $result;
+}
+
+$stmt2 = $db->prepare("SELECT id, account_number FROM Accounts WHERE user_id = :uid LIMIT 10");
+    $result3 =[];
+    try{
+    $stmt2 -> execute([":uid" => $user_id]);
+    $r = $stmt2->fetchALL(PDO::FETCH_ASSOC);
+        if ($r) {
+            
+            $result3 = $r;
+        }
+    }
+    catch(PDOException $e){
+        flash("<pre>" . var_export($e, true). "</pre>");
+    }
+?>
+<form method="POST">
+    <label type="text" placeholder="Account Number" class="form-label" for="account_number">Account Number</label>
+    <select name="account1">
+			<?php foreach ($result3 as $item) : ?>
+                <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number"); ?> - Checking </option>
+                <?php endforeach;?> 
+    </select>
+	<!-- If our sample is a transfer show other account field-->
+	<?php if($_GET['reason'] == 'transfer') : ?>
+    <label type="text" placeholder="Other Account Number" class="form-label" for="account_number">Other Account Number</label>
+    <select name="account2">
+			<?php foreach ($result3 as $item) : ?>
+                <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number"); ?> - Checking </option>
+                <?php endforeach;?> 
+        </select>
+	<?php endif; ?>
+	
+	<input type="number" name="diff" placeholder="$0.00"/>
+	<input type="hidden" name="reason" value="<?php echo $_GET['reason'];?>"/>
+	
+	<!--Based on sample type change the submit button display-->
+	<input type="submit" value="Move Money"/>
+</form>
+
+<?php
+error_log("received: " . var_export($_POST,true));
+if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff'])){
+	$reason = $_GET['reason'];
+    $acc=$_POST['account1'];
+    $acc2=$_POST['account2'];
+	$amount = (int)$_POST['diff'];
+	switch($reason){
+		case 'deposit':
+			//do_bank_action("000000000000", $_POST['account1'], ($amount * -1), $reason);
+            change_bills($amount, "Deposit", -1, $acc, "add");
+            flash("Your deposit was successfull", "success");
+			break;
+		case 'withdraw':
+			//do_bank_action($_POST['account1'], -1, ($amount * -1), $reason);
+            change_bills($ammount, "Withdraw", $acc, -1, "take");
+            flash("Your withdrawal was successfull", "success");
+			break;
+		case 'transfer':
+			//TODO figure it out
+            change_bills($ammount, "Withdraw", $acc, $acc2, "transfer");
+            flash("Your transfer was successfull", "success");
+			break;
+	}
+}
+
+require_once(__DIR__ . "/../../partials/flash.php");
+?>
