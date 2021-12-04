@@ -136,94 +136,48 @@
           - Description: Here is a picture of the profile page of a sample account that I created. One can also change any information here as well. 
 
 
-- Milestone 2
-- [ ] \(mm/dd/yyyy of completion) Create the Accounts table (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<table><tr><td>Milestone2</td></tr><tr><td><table><tr><td>F1 - Create the Accounts table (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified) (2021-11-23)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/login.php](https://ks38-prod.herokuapp.com/Project/login.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Project setup steps
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/103](https://github.com/karnveer32/IT202-011/pull/103)</p></td></tr><tr><td><table><tr><td>F1 - No Sub Item<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/143069241-62d24841-c0a6-4ee6-97e1-9faaa7e955d1.png"><p>Here is a picture of the profile page of a sample account that I created. One can also change any information here as well. </td></tr></td></tr></table></td></tr><table><tr><td>F2 - Project setup steps (2021-11-25)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/login.php](https://ks38-prod.herokuapp.com/Project/login.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Create the Transactions table (see reference below)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/119  ](https://github.com/karnveer32/IT202-011/pull/119  )</p><p>
 
+ [ https://github.com/karnveer32/IT202-011/pull/131]( https://github.com/karnveer32/IT202-011/pull/131)</p></td></tr><tr><td><table><tr><td>F2 - Create these as initial setup scripts in the sql folder: Create a system user if they don’t exist (this will never be logged into, it’s just to keep things working per system requirements)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/143898562-f9f1a3aa-03cf-4441-af1e-03d2abd57ba1.png"><p>In this picture, you can see the world account in the accounts table.</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F2 - Create these as initial setup scripts in the sql folder: Create a world account in the Accounts table created below (if it doesn’t exist)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/143492720-6c59e56a-0263-4557-82aa-539c41c8a955.png"><p>In this picture, you can see the system user account in the users table.</td></tr></td></tr></table></td></tr><table><tr><td>F3 - Create the Transactions table (see reference below) (2021-11-25)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Dashboard page
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://ks38-prod.herokuapp.com/Project/login.php](https://ks38-prod.herokuapp.com/Project/login.php)</p></td></tr><tr><td>PRs:<p>
 
+ [https://github.com/karnveer32/IT202-011/pull/125](https://github.com/karnveer32/IT202-011/pull/125)</p><p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to create a checking account
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/131](https://github.com/karnveer32/IT202-011/pull/131)</p></td></tr><tr><td><table><tr><td>F3 - No Sub Item <tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/143898342-224f73cf-b307-4d6f-83f9-260c484ecad7.png"><p> In this picture, you can see the transactions table that was created in the database of VS Code</td></tr></td></tr></table></td></tr><table><tr><td>F4 - Dashboard page (2021-11-25)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/login.php](https://ks38-prod.herokuapp.com/Project/login.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to list their accounts
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/111](https://github.com/karnveer32/IT202-011/pull/111)</p></td></tr><tr><td><table><tr><td>F4 - Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/143486697-65ebbbe5-e18f-44ca-9436-e1f3af293860.png"><p>The picture here shows the dashboard page which shows up on the home page after login. You can see links that redirect the client to other pages that have specific functions. For instance, the create account page will redirect the client to page where they can create an account. At this moment, only the edit profile link can redirect the client to another page solely because I have not reached and completed the issues pertaining to the other links.</td></tr></td></tr></table></td></tr><table><tr><td>F5 - User will be able to create a checking account (2021-12-01)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [ https://ks38-prod.herokuapp.com/Project/createAccounts.php]( https://ks38-prod.herokuapp.com/Project/createAccounts.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to click an account for more information (a.ka. Transaction History page)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/138](https://github.com/karnveer32/IT202-011/pull/138)</p></td></tr><tr><td><table><tr><td>F5 - System will generate a unique 12 digit account number<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144343707-c68c4424-e76e-4266-80f8-0bab77825e0d.png"><p>Above you can see a picture of the Account Creation Page.
+</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F5 - System will associate the account to the user<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144343793-2d86b4f8-0986-4fb7-be79-99040b815896.png"><p>Above you can see the accounts table with two accounts created for two different users. </td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F5 - Account type will be set as checking<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144343793-2d86b4f8-0986-4fb7-be79-99040b815896.png"><p>Here you can see that the account types were set as checking</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F5 - Will require a minimum deposit of $5 (from the world account)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144343793-2d86b4f8-0986-4fb7-be79-99040b815896.png"><p>Here you can see the table with at least $5 in each account</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F5 - User will see user-friendly error messages when appropriate<tr><td>Status: completed</td></tr><tr><td><img width="100%" src=""><p></td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F5 - User will see user-friendly success message when account is created successfully<tr><td>Status: completed</td></tr><tr><td><img width="100%" src=""><p></td></tr></td></tr></table></td></tr><table><tr><td>F6 - User will be able to list their accounts (2021-12-02)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/accounts.php](https://ks38-prod.herokuapp.com/Project/accounts.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to deposit/withdraw from their account(s)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/142](https://github.com/karnveer32/IT202-011/pull/142)</p></td></tr><tr><td><table><tr><td>F6 - Limit results to 5 for now & Show account number, account type and balance<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144530998-a87fcd85-24b7-4f05-8cb6-bba65fccbdcf.png"><p>In the above picture you can see a list of demo accounts I made for a user that one can view when they visit this page. This will be shown for any user. </td></tr></td></tr></table></td></tr><table><tr><td>F7 - User will be able to click an account for more information (a.ka. Transaction History page) (2021-12-02)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/transactionsHistory.php](https://ks38-prod.herokuapp.com/Project/transactionsHistory.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/148](https://github.com/karnveer32/IT202-011/pull/148)</p></td></tr><tr><td><table><tr><td>F7 - Show account number, account type, balance, opened/created date & Show transaction history (from Transactions table)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144531256-8de672e0-0b6c-4074-abb1-4a7ff3373848.png"><p>In the above picture you can see the transaction history page for one of my demo accounts.</td></tr></td></tr></table></td></tr><table><tr><td>F8 - User will be able to deposit/withdraw from their account(s) (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=deposit](https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=deposit)</p><p>
+
+ [ https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=withdraw]( https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=withdraw)</p><p>
+
+ [https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=transfer](https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=transfer)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/151](https://github.com/karnveer32/IT202-011/pull/151)</p></td></tr><tr><td><table><tr><td>F8 - Form should have a dropdown of their accounts to pick from<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144692357-baa155a5-aaca-4d3c-866a-ffbe7c61eddc.png"><p>Here you can see there is a dropdown function where the user can click and select different accounts</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F8 - Form should have a field to enter a positive numeric value<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144692357-baa155a5-aaca-4d3c-866a-ffbe7c61eddc.png"><p>Here you can see that the individual can only type in positive values</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F8 - For withdraw, add a check to make sure they can’t withdraw more money than the account has, Form should allow the user to record a memo for the transaction, & Each transaction is recorded as a transaction pair in the Transaction table per the details below<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144692357-baa155a5-aaca-4d3c-866a-ffbe7c61eddc.png"><p>All three fall in the same page for me so that why I put them together, here you can see the proof of each task</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F8 - Show appropriate user-friendly error messages & Show user-friendly success messages<tr><td>Status: completed</td></tr><tr><td><img width="100%" src=""><p></td></tr></td></tr></table></td></tr></td></tr></table>
 
 - Milestone 3
 - [ ] \(mm/dd/yyyy of completion) User will be able to transfer between their accounts
