@@ -252,8 +252,6 @@ function get_or_create_account2()
                 $account["id"] = $result["id"];
                 $account["account_num"] = $result["account_number"];
                 $account["balance"] = $result["balance"];
-                //return $result["id"];
-                //return $result["account_number"];
                 return $result["balance"];
             }
         } catch (PDOException $e) {
