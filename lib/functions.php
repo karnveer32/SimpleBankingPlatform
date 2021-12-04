@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "/db.php");
+require_once(__DIR__ . "/db.php"); 
 $BASE_PATH = '/Project/'; //This is going to be a helper for redirecting to our base project path since it's nested in another folder
 function se($v, $k = null, $default = "", $isEcho = true)
 {
@@ -187,7 +187,9 @@ function get_or_create_account()
                 $account["id"] = $result["id"];
                 $account["account_num"] = $result["account_number"];
                 $account["balance"] = $result["balance"];
+                //return $result["id"];
                 return $result["account_number"];
+                //return $result["balance"];
             }
         } catch (PDOException $e) {
             flash("Technical error: " . var_export($e->errorInfo, true), "danger");
