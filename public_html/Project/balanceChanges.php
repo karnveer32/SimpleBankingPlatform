@@ -1,5 +1,7 @@
 <?php
     require(__DIR__ . "/../../partials/nav.php");
+    require_once(__DIR__ . "/../../lib/db.php");
+    require_once(__DIR__ . "/../../lib/functions.php"); 
     $acc=get_or_create_account(); 
     $user_id=get_user_id();
 
@@ -104,8 +106,8 @@ function do_bank_action($account1, $account2, $amountChange, $reason){
 	echo var_export($stmt->errorInfo(), true);
 	return $result;
 }
-
-$stmt2 = $db->prepare("SELECT id, account_number FROM Accounts WHERE user_id = :uid LIMIT 10");
+$db = getDB();
+$stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE user_id = :uid LIMIT 10");
     $result3 =[];
     try{
     $stmt2 -> execute([":uid" => $user_id]);
@@ -118,15 +120,16 @@ $stmt2 = $db->prepare("SELECT id, account_number FROM Accounts WHERE user_id = :
     catch(PDOException $e){
         flash("<pre>" . var_export($e, true). "</pre>");
     }
+
 ?>
 <form method="POST">
     <label type="text" placeholder="Account Number" class="form-label" for="account_number">Account Number</label>
     <select name="account1">
 			<?php foreach ($result3 as $item) : ?>
-                <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number"); ?> - Checking </option>
+                <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number");?> - Checking </option>
                 <?php endforeach;?> 
     </select>
-	<!-- If our sample is a transfer show other account field-->
+    <!-- If our sample is a transfer show other account field-->
 	<?php if($_GET['reason'] == 'transfer') : ?>
     <label type="text" placeholder="Other Account Number" class="form-label" for="account_number">Other Account Number</label>
     <select name="account2">
@@ -135,38 +138,46 @@ $stmt2 = $db->prepare("SELECT id, account_number FROM Accounts WHERE user_id = :
                 <?php endforeach;?> 
         </select>
 	<?php endif; ?>
-	
-	<input type="number" name="diff" placeholder="$0.00"/>
-	<input type="hidden" name="reason" value="<?php echo $_GET['reason'];?>"/>
+
+	<input type="number" name="diff" min=0 placeholder="$0.00"/>
+	<input type="text" name="reason" value="<?php echo $_GET['reason'];?>"/>
 	
 	<!--Based on sample type change the submit button display-->
 	<input type="submit" value="Move Money"/>
 </form>
 
 <?php
+$bal=get_or_create_account2();
 error_log("received: " . var_export($_POST,true));
 if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff'])){
 	$reason = $_GET['reason'];
     $acc=$_POST['account1'];
     $acc2=$_POST['account2'];
 	$amount = (int)$_POST['diff'];
+    $memo=$_POST['reason'];
+
 	switch($reason){
 		case 'deposit':
 			//do_bank_action("000000000000", $_POST['account1'], ($amount * -1), $reason);
-            change_bills($amount, "Deposit", -1, $acc, "add");
+            change_bills($amount, "Deposit", -1, $acc, $memo);
             flash("Your deposit was successfull", "success");
 			break;
 		case 'withdraw':
 			//do_bank_action($_POST['account1'], -1, ($amount * -1), $reason);
-            change_bills($ammount, "Withdraw", $acc, -1, "take");
+            change_bills($amount, "Withdraw", $acc, -1, $memo);
             flash("Your withdrawal was successfull", "success");
 			break;
 		case 'transfer':
 			//TODO figure it out
-            change_bills($ammount, "Withdraw", $acc, $acc2, "transfer");
-            flash("Your transfer was successfull", "success");
-			break;
-	}
+            if($amount<=$bal){
+                change_bills($amount, "Withdraw", $acc, $acc2, $memo);
+                flash("Your transfer was successfull", "success");
+                break;
+            }
+            else{
+                flash("Insufficient Funds", "danger");
+            }
+        }
 }
 
 require_once(__DIR__ . "/../../partials/flash.php");
