@@ -154,23 +154,29 @@ if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff']))
     $acc=$_POST['account1'];
     $acc2=$_POST['account2'];
 	$amount = (int)$_POST['diff'];
+    $memo=$_POST['reason'];
 
 	switch($reason){
 		case 'deposit':
 			//do_bank_action("000000000000", $_POST['account1'], ($amount * -1), $reason);
-            change_bills($amount, "Deposit", -1, $acc, "add");
+            change_bills($amount, "Deposit", -1, $acc, $memo);
             flash("Your deposit was successfull", "success");
 			break;
 		case 'withdraw':
 			//do_bank_action($_POST['account1'], -1, ($amount * -1), $reason);
-            change_bills($amount, "Withdraw", $acc, -1, "take");
+            change_bills($amount, "Withdraw", $acc, -1, $memo);
             flash("Your withdrawal was successfull", "success");
 			break;
 		case 'transfer':
 			//TODO figure it out
-            change_bills($amount, "Withdraw", $acc, $acc2, "transfer");
-            flash("Your transfer was successfull", "success");
-            break;
+            if($amount<=$bal){
+                change_bills($amount, "Withdraw", $acc, $acc2, $memo);
+                flash("Your transfer was successfull", "success");
+                break;
+            }
+            else{
+                flash("Insufficient Funds", "danger");
+            }
         }
 }
 
