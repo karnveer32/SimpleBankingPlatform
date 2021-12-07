@@ -1,0 +1,2 @@
+ALTER TABLE Users
+ADD fname VARCHAR(25) NOT NULL;
