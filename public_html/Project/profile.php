@@ -4,6 +4,8 @@ is_logged_in(true);
 ?>
 <?php
 if (isset($_POST["save"])) {
+    $fname = se($_POST, "fname", null, false);
+    $lname = se($_POST, "lname", null, false);
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
     $hasError = false;
@@ -19,9 +21,9 @@ if (isset($_POST["save"])) {
         $hasError = true;
     }
     if (!$hasError) {
-        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+        $params = [":fname" => $fname, ":lname" => $lname, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+        $stmt = $db->prepare("UPDATE Users set fname = :fname, lname = :lname, email = :email, username = :username where id = :id");
         try {
             $stmt->execute($params);
         } catch (Exception $e) {
@@ -29,12 +31,13 @@ if (isset($_POST["save"])) {
         }
     }
     //select fresh data from table
-    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username` from Users where id = :id LIMIT 1");
+    $stmt = $db->prepare("SELECT fname, lname, id, email, IFNULL(username, email) as `username` from Users where id = :id LIMIT 1");
     try {
         $stmt->execute([":id" => get_user_id()]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user) {
-            //$_SESSION["user"] = $user;
+            $_SESSION["user"]["fname"] = $user["fname"];
+            $_SESSION["user"]["lname"] = $user["lname"];
             $_SESSION["user"]["email"] = $user["email"];
             $_SESSION["user"]["username"] = $user["username"];
         } else {
@@ -84,10 +87,20 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
+$fname=get_userfname();
+$lname=get_userlname();
 ?>
 <div class="container-fluid">
     <h1>Profile</h1>
     <form method="POST" onsubmit="return validate(this);">
+        <div class="mb-3">
+            <label class="form-label" for="fname">First Name: </label>
+            <input class="form-control" type="text" name="fname" id="fname" value="<?php se($fname); ?>" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="lname">Last Name: </label>
+            <input class="form-control" type="text" name="lname" id="lname" value="<?php se($lname); ?>" />
+        </div>
         <div class="mb-3">
             <label class="form-label" for="email">Email</label>
             <input class="form-control" type="email" name="email" id="email" value="<?php se($email); ?>" />
