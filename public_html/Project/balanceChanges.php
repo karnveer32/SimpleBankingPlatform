@@ -2,7 +2,7 @@
     require(__DIR__ . "/../../partials/nav.php");
     require_once(__DIR__ . "/../../lib/db.php");
     require_once(__DIR__ . "/../../lib/functions.php"); 
-    $acc=get_or_create_account(); 
+    //$acc=get_or_create_account(); 
     $user_id=get_user_id();
 
     /*
@@ -147,7 +147,7 @@ $stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE us
 </form>
 
 <?php
-$bal=get_or_create_account2();
+$bal2=se($item, 'balance');
 error_log("received: " . var_export($_POST,true));
 if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff'])){
 	$reason = $_GET['reason'];
@@ -169,7 +169,7 @@ if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff']))
 			break;
 		case 'transfer':
 			//TODO figure it out
-            if($amount<=$bal){
+            if($amount<=$bal2){
                 change_bills($amount, "Withdraw", $acc, $acc2, $memo);
                 flash("Your transfer was successfull", "success");
                 break;

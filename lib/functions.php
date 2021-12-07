@@ -56,6 +56,22 @@ function has_role($role)
     }
     return false;
 }
+function get_userfname()
+{
+    if (is_logged_in()) { //we need to check for login first because "user" key may not exist
+        return se($_SESSION["user"], "fname", "", false);
+    }
+    return "";
+}
+
+function get_userlname()
+{
+    if (is_logged_in()) { //we need to check for login first because "user" key may not exist
+        return se($_SESSION["user"], "lname", "", false);
+    }
+    return "";
+}
+
 function get_username()
 {
     if (is_logged_in()) { //we need to check for login first because "user" key may not exist
@@ -137,18 +153,23 @@ function get_url($dest)
  * Will populate/refresh $_SESSION["user"]["account"] regardless.
  * Make sure this is called after the session has been set
  */
-function get_or_create_account()
+function get_or_create_account($s=null)
 {
     if (is_logged_in()) {
         //let's define our data structure first
         //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
         $account = ["id" => -1, "account_num" => false, "balance" => 0];
         //this should always be 0 or 1, but being safe
-        $query = "SELECT id, account_number, balance from Accounts where user_id = :uid LIMIT 1";
+        $query = "SELECT id, account_number, balance from Accounts where user_id = :uid";
+        $param=[":uid"=>get_user_id()];
+        if(!isset($s)) {
+            $query .=" AND id=:id";
+            $param[":id"]=$s;
+        }
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
-            $stmt->execute([":uid" => get_user_id()]);
+            $stmt->execute($param);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if (!$result) {
                 //account doesn't exist, create it
@@ -202,18 +223,23 @@ function get_or_create_account()
     }
 }
 
-function get_or_create_account2()
+function get_or_create_account2($s=null)
 {
     if (is_logged_in()) {
         //let's define our data structure first
         //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
         $account = ["id" => -1, "account_num" => false, "balance" => 0];
         //this should always be 0 or 1, but being safe
-        $query = "SELECT id, account_number, balance from Accounts where user_id = :uid LIMIT 1";
+        $query = "SELECT id, account_number, balance from Accounts where user_id = :uid";
+        $param=[":uid"=>get_user_id()];
+        if(!isset($s)) {
+            $query .=" AND id=:id";
+            $param[":id"]=$s;
+        }
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
-            $stmt->execute([":uid" => get_user_id()]);
+            $stmt->execute($param);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if (!$result) {
                 //account doesn't exist, create it
