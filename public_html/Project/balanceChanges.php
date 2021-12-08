@@ -144,6 +144,9 @@ $stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE us
 	
 	<!--Based on sample type change the submit button display-->
 	<input type="submit" value="Move Money"/>
+
+
+    <li><a href="extBalanceChanges.php?id=<?php se($item, 'id'); ?>">External Transfer</a>
 </form>
 
 <?php
