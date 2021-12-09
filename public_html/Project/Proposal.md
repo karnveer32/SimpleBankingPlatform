@@ -179,49 +179,25 @@
 
  [https://github.com/karnveer32/IT202-011/pull/151](https://github.com/karnveer32/IT202-011/pull/151)</p></td></tr><tr><td><table><tr><td>F8 - Form should have a dropdown of their accounts to pick from<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144692357-baa155a5-aaca-4d3c-866a-ffbe7c61eddc.png"><p>Here you can see there is a dropdown function where the user can click and select different accounts</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F8 - Form should have a field to enter a positive numeric value<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144692357-baa155a5-aaca-4d3c-866a-ffbe7c61eddc.png"><p>Here you can see that the individual can only type in positive values</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F8 - For withdraw, add a check to make sure they can’t withdraw more money than the account has, Form should allow the user to record a memo for the transaction, & Each transaction is recorded as a transaction pair in the Transaction table per the details below<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/81723756/144692357-baa155a5-aaca-4d3c-866a-ffbe7c61eddc.png"><p>All three fall in the same page for me so that why I put them together, here you can see the proof of each task</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F8 - Show appropriate user-friendly error messages & Show user-friendly success messages<tr><td>Status: completed</td></tr><tr><td><img width="100%" src=""><p></td></tr></td></tr></table></td></tr></td></tr></table>
 
-- Milestone 3
-- [ ] \(mm/dd/yyyy of completion) User will be able to transfer between their accounts
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+- <table><tr><td>Milestone 3</td></tr><tr><td><table><tr><td>F1 - User will be able to transfer between their accounts (2021-12-04)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [ https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=transfer]( https://ks38-prod.herokuapp.com/Project/balanceChanges.php?reason=transfer)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Transaction History page
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/159](https://github.com/karnveer32/IT202-011/pull/159)</p></td></tr><tr><td><table><tr><td>F1 - Form should include a dropdown first AccountSrc and a dropdown for AccountDest (only accounts the user owns; no world account) Form should include a field for a positive numeric value System shouldn’t allow the user to transfer more funds than what’s available in AccountSrc Form should allow the user to record a memo for the transaction Each transaction is recorded as a transaction pair in the Transaction table These will reflect in the transaction history page Show appropriate user-friendly error messages Show user-friendly success messages<tr><td>Status: completed</td></tr><tr><td><img width="600px" src="https://user-images.githubusercontent.com/81723756/144732875-9145f496-66d9-4a73-9fa4-68748af3bf14.png"><p>Above, the user has the ability to transfer between their two accounts. The user can select which accounts via the drop down function, can type in any amount as long as the source account has the proper funds, and can record a memo. If the user has the proper funds, the transfer will take place and a successful message will appear in green. If not, their will be a, "Insufficient Funds" message that will appear in red. </td></tr></td></tr></table></td></tr><table><tr><td>F2 - Transaction History page (2021-12-07)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/transactionsHistory.php?id=1](https://ks38-prod.herokuapp.com/Project/transactionsHistory.php?id=1)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User’s profile page should record/show First and Last name
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/163](https://github.com/karnveer32/IT202-011/pull/163)</p></td></tr><tr><td><table><tr><td>F2 - Will show the latest 10 transactions by default User will be able to filter transactions between two dates User will be able to filter transactions by type (deposit, withdraw, transfer) Transactions should paginate results after the initial 10<tr><td>Status: completed</td></tr><tr><td><img width="600px" src="https://user-images.githubusercontent.com/81723756/145075446-e7460cb1-10a9-4f5a-8492-61bcc4699d89.png"><p>Above you can see a picture of a demo account where the user can the drop down functionality to select dates/times as well the reason they want to filter the results by. 
+</td></tr></td></tr></table></td></tr><table><tr><td>F3 - User’s profile page should record/show First and Last name (2021-12-07)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/profile.php](https://ks38-prod.herokuapp.com/Project/profile.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to transfer funds to another user’s account
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/163](https://github.com/karnveer32/IT202-011/pull/163)</p></td></tr><tr><td><table><tr><td>F3 - No Subitem<tr><td>Status: completed</td></tr><tr><td><img width="600px" src="https://user-images.githubusercontent.com/81723756/145078749-0370f9eb-37e2-42d6-89ff-2cab50936588.png"><p>Above you can see that the user is able to enter their first and last name and it will be associated with the account in the database table. I accidentally did this in the same branch so I using this PR for both issues
+</td></tr></td></tr></table></td></tr><table><tr><td>F4 - User will be able to transfer funds to another user’s account (2021-12-08)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://ks38-prod.herokuapp.com/Project/extBalanceChanges.php?id=11](https://ks38-prod.herokuapp.com/Project/extBalanceChanges.php?id=11)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/167](https://github.com/karnveer32/IT202-011/pull/167)</p></td></tr><tr><td><table><tr><td>F4 - Form should include a dropdown of the current user’s accounts (as AccountSrc) Form should include a field for the destination user’s last name Form should include a field for the last 4 digits of the destination user’s account number (to lookup AccountDest) Form should include a field for a positive numerical value Form should allow the user to record a memo for the transaction System shouldn’t let the user transfer more than the balance of their account System will lookup appropriate account based on destination user’s last name and the last 4 digits of the account number Show appropriate user-friendly error messages Show user-friendly success messages Transaction will be recorded with the type as “ext-transfer” Each transaction is recorded as a transaction pair in the Transaction table These will reflect in the transaction history page<tr><td>Status: completed</td></tr><tr><td><img width="600px" src="https://user-images.githubusercontent.com/81723756/145250674-7545a2db-6343-49ad-a5ac-f442d877e5c2.png"><p>Above you can see a picture of the page where the user can conduct external transfers by selecting the account they want to send money from and typing in the last name and the last 4 digits of the account number they want to make the transfer to. </td></tr></td></tr></table></td></tr></td></tr></table>
 
 - Milestone 4
 ### Intructions 
