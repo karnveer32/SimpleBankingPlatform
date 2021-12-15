@@ -1,13 +1,26 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
+$user_id = se($_GET, "id", get_user_id(), false);
+error_log("user id $user_id");
+$isMe = $user_id === get_user_id();
+//!! makes the value into a true or false value regardless of the data https://stackoverflow.com/a/2127324
+$edit = !!se($_GET, "edit", false, false); //if key is present allow edit, otherwise no edit
+/*
+if ($user_id < 1) {
+    flash("Invalid user", "danger");
+    //redirect("home.php");
+    die(header("Location: home.php"));
+}
+*/
 ?>
 <?php
-if (isset($_POST["save"])) {
+if (isset($_POST["save"]) && $isMe && $edit) {
     $fname = se($_POST, "fname", null, false);
     $lname = se($_POST, "lname", null, false);
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
+    $visibility = !!se($_POST, "visibility", false, false) ? 1 : 0;
     $hasError = false;
     //sanitize
     $email = sanitize_email($email);
@@ -21,9 +34,9 @@ if (isset($_POST["save"])) {
         $hasError = true;
     }
     if (!$hasError) {
-        $params = [":fname" => $fname, ":lname" => $lname, ":email" => $email, ":username" => $username, ":id" => get_user_id()];
+        $params = [":fname" => $fname, ":lname" => $lname, ":email" => $email, ":username" => $username, ":id" => get_user_id(), ":vis" => $visibility];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set fname = :fname, lname = :lname, email = :email, username = :username where id = :id");
+        $stmt = $db->prepare("UPDATE Users set fname = :fname, lname = :lname, email = :email, username = :username, visibility = :vis where id = :id");
         try {
             $stmt->execute($params);
         } catch (Exception $e) {
@@ -89,10 +102,50 @@ $email = get_user_email();
 $username = get_username();
 $fname=get_userfname();
 $lname=get_userlname();
+$created = "";
+$public = false;
+//$user_id = get_user_id(); //this is retrieved above now
+//TODO pull any other public info you want
+$db = getDB();
+$stmt = $db->prepare("SELECT username, created, visibility from Users where id = :id");
+try {
+    $stmt->execute([":id" => $user_id]);
+    $r = $stmt->fetch(PDO::FETCH_ASSOC);
+    error_log("user: " . var_export($r, true));
+    $username = se($r, "username", "", false);
+    $created = se($r, "created", "", false);
+    $public = se($r, "visibility", 0, false) > 0;
+    if (!$public && !$isMe) {
+        flash("User's profile is private", "warning");
+        //redirect("home.php");
+        die(header("Location: home.php"));
+    }
+} catch (Exception $e) {
+    echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+}
 ?>
 <div class="container-fluid">
     <h1>Profile</h1>
+    <?php if ($isMe) : ?>
+        <?php if ($edit) : ?>
+            <a class="btn btn-primary" href="?">View</a>
+        <?php else : ?>
+            <a class="btn btn-primary" href="?edit=true">Edit</a>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if (!$edit) : ?>
+        <div>Username: <?php se($username); ?></div>
+        <div>Joined: <?php se($created); ?></div>
+        <!-- TODO any other public info -->
+    <?php endif; ?>
+    <?php if($isMe && $edit) : ?>
     <form method="POST" onsubmit="return validate(this);">
+        <div class="mb-3">
+            <div class="form-check form-switch">
+                <input name="visibility" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" <?php if ($public) echo "checked"; ?>>
+                <label class="form-check-label" for="flexSwitchCheckDefault">Make Profile Public</label>
+            </div>
+        </div>
         <div class="mb-3">
             <label class="form-label" for="fname">First Name: </label>
             <input class="form-control" type="text" name="fname" id="fname" value="<?php se($fname); ?>" />
@@ -125,6 +178,7 @@ $lname=get_userlname();
         </div>
         <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
     </form>
+    <?php endif; ?>
 </div>
 <script>
     function validate(form) {
@@ -155,6 +209,6 @@ $lname=get_userlname();
         return isValid;
     }
 </script>
-<?php
-require_once(__DIR__ . "/../../partials/flash.php");
+<?php 
+require_once(__DIR__ . "/../../partials/flash.php"); 
 ?>
