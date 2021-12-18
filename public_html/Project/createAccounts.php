@@ -38,6 +38,7 @@ if (isset($_POST["account_type"]) && isset($_POST["deposit"])) {
         <label class="form-label" for="account_type">Account Type</label>
 		<select name="account_type">
 			<option value="checking">Checking</option>
+            <option value="savings">Savings</option>
 		</select>
     </div>
 
