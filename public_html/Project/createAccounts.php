@@ -6,7 +6,7 @@ if (isset($_POST["account_type"]) && isset($_POST["deposit"])) {
 	$db = getDB();
     try {
         $user_id = get_user_id();
-        $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type, user_id) VALUES(null, :t, :uid) LIMIT=5");
+        $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type, user_id) VALUES(null, :t, :uid)");
         error_log(var_export($_POST, true));
         $stmt->execute([":t" => $_POST["account_type"], ":uid" => $user_id]);
         $aid = $db->lastInsertId();
