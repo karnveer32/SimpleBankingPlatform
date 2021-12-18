@@ -1,0 +1,2 @@
+ALTER TABLE Accounts
+ADD APY int NOT NULL;
