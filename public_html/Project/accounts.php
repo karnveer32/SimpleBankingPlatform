@@ -7,7 +7,7 @@ require(__DIR__ . "/../../partials/nav.php");
 
 $user_id=get_user_id();
 $db=getDB();
-$stmt = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE user_id = :uid LIMIT 5");
+$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid LIMIT 5");
 $result =[];
 try{
 $stmt -> execute([":uid" => $user_id]);
@@ -30,7 +30,7 @@ catch(PDOException $e){
         <li> <a href="transactionsHistory.php?id=<?php se($item, 'id'); ?>"> Account:</a>
             <ul>
                 <li> Account Number: <?php se($item, "account_number"); ?> </li>
-                <li> Account Type: Checking </li>
+                <li> Account Type: <?php se($item, "account_type"); ?> </li>
                 <li> Balance: $<?php se($item, "balance"); ?></li>
             </ul>
         </li> 

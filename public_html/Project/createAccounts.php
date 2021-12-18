@@ -6,9 +6,10 @@ if (isset($_POST["account_type"]) && isset($_POST["deposit"])) {
 	$db = getDB();
     try {
         $user_id = get_user_id();
-        $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type, user_id) VALUES(null, :t, :uid)");
+        $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type, APY, user_id) VALUES(null, :t, :interest, :uid)");
         error_log(var_export($_POST, true));
-        $stmt->execute([":t" => $_POST["account_type"], ":uid" => $user_id]);
+        $interest=10;
+        $stmt->execute([":t" => $_POST["account_type"], ":interest" => $interest, ":uid" => $user_id]);
         $aid = $db->lastInsertId();
         $account_number = str_pad($aid, 12, "0", STR_PAD_LEFT);
         $stmt = $db->prepare("UPDATE Accounts set account_number = :a WHERE id = :id");
