@@ -8,13 +8,18 @@ if (isset($_POST["account_type"]) && isset($_POST["deposit"])) {
         $user_id = get_user_id();
         $stmt = $db->prepare("INSERT INTO Accounts (account_number, account_type, APY, user_id) VALUES(null, :t, :interest, :uid)");
         error_log(var_export($_POST, true));
-        $interest=10;
-        $stmt->execute([":t" => $_POST["account_type"], ":interest" => $interest, ":uid" => $user_id]);
+        $beginterest=0;
+        $stmt->execute([":t" => $_POST["account_type"], ":interest" => $beginterest, ":uid" => $user_id]);
         $aid = $db->lastInsertId();
         $account_number = str_pad($aid, 12, "0", STR_PAD_LEFT);
         $stmt = $db->prepare("UPDATE Accounts set account_number = :a WHERE id = :id");
         $stmt->execute([":a" => $account_number, ":id" => $aid]);
         //TODO transaction and refresh for deposit value if >= 5
+        if($_POST["account_type"] == 'savings') {
+            $stmt = $db->prepare("UPDATE Accounts set APY = :a WHERE id = :id");
+            $interest=10;
+            $stmt->execute([":a" => $interest, ":id" => $aid]);
+        }
         $deposit = (int)se($_POST,"deposit", 0, false);
         if($deposit >=5) {
 			//assumes balance, transfer type, src, dest, memo
