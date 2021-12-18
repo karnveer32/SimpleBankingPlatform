@@ -57,7 +57,7 @@ try {
     flash("<pre>" . var_export($e, true) . "</pre>");
 }
 
-$stmt3 = $db->prepare("SELECT account_number, balance FROM Accounts WHERE id=:src");
+$stmt3 = $db->prepare("SELECT account_number, balance, account_type, APY FROM Accounts WHERE id=:src");
 try {
     $stmt3->execute([":src" => $src]);
     $r3 = $stmt3->fetchALL(PDO::FETCH_ASSOC);
@@ -77,9 +77,12 @@ try {
         <ul>
             <li> Account Number: <?php foreach ($results3 as $result) : se($result, 'account_number');
                                     endforeach ?> </li>
-            <li> Account Type: Checking </li>
+            <li> Account Type: <?php foreach ($results3 as $result) : se($result, 'account_type');
+                                    endforeach ?> </li>
             <li> Balance: $<?php foreach ($results3 as $result) : se($result, 'balance');
                             endforeach ?></li>
+            <li> APY: <?php foreach ($results3 as $result) : se($result, 'APY');
+                            endforeach ?>%</li>
             <li> Opened/Created Date: <?php foreach ($results2 as $result) : se($result, 'created');
                                         endforeach; ?> </li>
             <li> Transaction History: </li>
