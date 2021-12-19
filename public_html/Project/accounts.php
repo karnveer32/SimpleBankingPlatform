@@ -7,7 +7,7 @@ require(__DIR__ . "/../../partials/nav.php");
 
 $user_id=get_user_id();
 $db=getDB();
-$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid LIMIT 5");
+$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid");
 $result =[];
 try{
 $stmt -> execute([":uid" => $user_id]);
@@ -15,11 +15,20 @@ $r = $stmt->fetchALL(PDO::FETCH_ASSOC);
     if ($r) {
         
         $result = $r;
+        $bal=$r["balance"];
     }
 }
 catch(PDOException $e){
     flash("<pre>" . var_export($e, true). "</pre>");
 }
+$x=0;
+if($bal>0){
+    $x=1;
+}
+else{
+    $x=0;
+}
+
 ?>
 
 <div class="container-fluid">
@@ -32,11 +41,21 @@ catch(PDOException $e){
                 <li> Account Number: <?php se($item, "account_number"); ?> </li>
                 <li> Account Type: <?php se($item, "account_type"); ?> </li>
                 <li> Balance: $<?php se($item, "balance"); ?></li>
+                <li><input type="submit" value="Close Account"/></li>
             </ul>
         </li> 
     </ul>
 </nav>
-<?php endforeach; 
+<?php 
+if(isset($_POST['submit'])){
+    if($x=1){
+        flash("Cannot close account due to funds", "danger");
+    }
+    else{
+        flash("Closed account", "success");
+    }
+}
+endforeach; 
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>
 </div>
