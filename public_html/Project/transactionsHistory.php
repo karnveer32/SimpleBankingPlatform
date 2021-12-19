@@ -69,6 +69,25 @@ try {
     flash("<pre>" . var_export($e, true) . "</pre>");
 }
 
+$stmt4 = $db->prepare("SELECT account_type, APY FROM Accounts WHERE id=:src");
+try {
+    $stmt4->execute([":src" => $src]);
+    $r4 = $stmt4->fetch(PDO::FETCH_ASSOC);
+    if ($r4) {
+        $atype=$r4["account_type"];
+    }
+} catch (PDOException $e) {
+    flash("<pre>" . var_export($e, true) . "</pre>");
+} 
+
+$apy=10;
+
+    if($atype == "savings"){
+        $apy="10%";
+    }
+    else{
+        $apy="-";
+    }
 ?>
 
 <div class="container-fluid">
@@ -76,13 +95,12 @@ try {
     <nav>
         <ul>
             <li> Account Number: <?php foreach ($results3 as $result) : se($result, 'account_number');
-                                    endforeach ?> </li>
+                                    endforeach; ?> </li>
             <li> Account Type: <?php foreach ($results3 as $result) : se($result, 'account_type');
-                                    endforeach ?> </li>
+                                    endforeach; ?> </li>
             <li> Balance: $<?php foreach ($results3 as $result) : se($result, 'balance');
-                            endforeach ?></li>
-            <li> APY: <?php foreach ($results3 as $result) : se($result, 'APY');
-                            endforeach ?>%</li>
+                            endforeach; ?></li>
+            <li> APY: <?php echo $apy ?></li>
             <li> Opened/Created Date: <?php foreach ($results2 as $result) : se($result, 'created');
                                         endforeach; ?> </li>
             <li> Transaction History: </li>
@@ -150,3 +168,4 @@ try {
             </div>
         </ul>
     </nav>
+</div>
