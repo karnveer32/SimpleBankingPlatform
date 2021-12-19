@@ -8,6 +8,7 @@
                     <li><a href="balanceChanges.php?reason=deposit">Deposit</a></li>
                     <li><a href="balanceChanges.php?reason=withdraw">Withdraw</a></li>
                     <li><a href="balanceChanges.php?reason=transfer">Transfer</a></li>
+                    <li><a href="loans.php">Obtain a Loan</a></li>
                     <li><a href="profile.php">Edit Profile</a></li>
                 </ul>
             </nav>

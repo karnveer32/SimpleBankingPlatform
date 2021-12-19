@@ -82,12 +82,60 @@ try {
 
 $apy=10;
 
-    if($atype == "savings"){
+    if($atype == "savings" OR $atype == "loan"){
         $apy="10%";
     }
     else{
         $apy="-";
     }
+
+    $stmt5 = $db->prepare("SELECT account_number, balance, account_type FROM Accounts WHERE id=:src");
+    try {
+        $stmt5->execute([":src" => $src]);
+        $r5 = $stmt5->fetch(PDO::FETCH_ASSOC);
+        if ($r5) {
+            $results5 = $r5;
+            $accountType = $r5["account_type"];
+            $bal = $r5["balance"];
+        }
+    } catch (PDOException $e) {
+        flash("<pre>" . var_export($e, true) . "</pre>");
+    }
+
+    $a=0;
+    if($accountType == "loan"){
+        $a=1;
+    }
+    elseif($accountType == "savings"){
+        $a=2;
+    }
+    else{
+        $a=3;
+    }
+
+    $stmt6 = $db->prepare("SELECT diff, reason FROM Transactions WHERE src =:src");
+    try {
+        $stmt6->execute([":src" => $src]);
+        $r6 = $stmt6->fetch(PDO::FETCH_ASSOC);
+        if ($r6) {
+            $results6 = $r6;
+            $type=$r6["reason"];
+
+        }
+    } catch (PDOException $e) {
+        flash("<pre>" . var_export($e, true) . "</pre>");
+    }
+
+    $t=0;
+    foreach($results6 as $item) :
+        if(se($item, "reason")=="loan amount"){
+            $t=1;
+        }
+    endforeach;
+    //if(strpos($type, 'loan')){
+        //$t=1;
+    //}
+
 ?>
 
 <div class="container-fluid">
@@ -100,6 +148,24 @@ $apy=10;
                                     endforeach; ?> </li>
             <li> Balance: $<?php foreach ($results3 as $result) : se($result, 'balance');
                             endforeach; ?></li>
+            <li>Loan Balance: $<?php 
+            if($a==1){
+                foreach($results3 as $result) : 
+                    se($result, 'balance');
+                endforeach; }
+            elseif($a==2){
+                foreach($results6 as $item) :
+                    if($t==1){
+                        se($item, 'diff');
+                    }
+                    else{
+                        se($item, 'diff');
+                    }
+                endforeach;
+            }
+
+            ?>
+            </li>
             <li> APY: <?php echo $apy ?></li>
             <li> Opened/Created Date: <?php foreach ($results2 as $result) : se($result, 'created');
                                         endforeach; ?> </li>
@@ -169,3 +235,5 @@ $apy=10;
         </ul>
     </nav>
 </div>
+
+<?php //CHANGES IN 91-138, 85, 151-168
