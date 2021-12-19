@@ -128,7 +128,7 @@ $apy=10;
 
     $t=0;
     foreach($results6 as $item) :
-        if(se($item, "reason")=="loan amount"){
+        if($item["reason"] == "loan amount"){
             $t=1;
         }
     endforeach;
@@ -235,5 +235,3 @@ $apy=10;
         </ul>
     </nav>
 </div>
-
-<?php //CHANGES IN 91-138, 85, 151-168
