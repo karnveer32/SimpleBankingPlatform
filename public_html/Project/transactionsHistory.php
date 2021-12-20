@@ -62,7 +62,6 @@ try {
     $stmt3->execute([":src" => $src]);
     $r3 = $stmt3->fetchALL(PDO::FETCH_ASSOC);
     if ($r3) {
-
         $results3 = $r3;
     }
 } catch (PDOException $e) {
@@ -125,17 +124,15 @@ $apy=10;
     } catch (PDOException $e) {
         flash("<pre>" . var_export($e, true) . "</pre>");
     }
-
-    $t=0;
+    $t=1;
     foreach($results6 as $item) :
-        if($item["reason"] == "loan amount"){
+        if($type == "loan amount"){
             $t=1;
         }
     endforeach;
     //if(strpos($type, 'loan')){
         //$t=1;
     //}
-
 ?>
 
 <div class="container-fluid">
@@ -146,23 +143,18 @@ $apy=10;
                                     endforeach; ?> </li>
             <li> Account Type: <?php foreach ($results3 as $result) : se($result, 'account_type');
                                     endforeach; ?> </li>
+            <?php if($a>1) : ?>
             <li> Balance: $<?php foreach ($results3 as $result) : se($result, 'balance');
                             endforeach; ?></li>
+            <?php endif; ?>
+            <?php if($a==1) : ?>
             <li>Loan Balance: $<?php 
             if($a==1){
                 foreach($results3 as $result) : 
                     se($result, 'balance');
-                endforeach; }
-            elseif($a==2){
-                foreach($results6 as $item) :
-                    if($t==1){
-                        se($item, 'diff');
-                    }
-                    else{
-                        se($item, 'diff');
-                    }
-                endforeach;
+                endforeach; 
             }
+        endif;
 
             ?>
             </li>
