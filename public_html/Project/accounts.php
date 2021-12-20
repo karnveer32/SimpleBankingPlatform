@@ -27,33 +27,52 @@ try{
 $stmt2 -> execute([":uid" => $user2]);
 $r2 = $stmt2->fetch(PDO::FETCH_ASSOC);
     if ($r2) {
-        $bal2=$r2['balance'];
-        $aid2=$r2["account_number"];
+        $result2=$r2;
     }
 }
 catch(PDOException $e){
     flash("<pre>" . var_export($e, true). "</pre>");
 }
-$x=0;
-if($bal == 0){
-    $x=0;
-}
-else{
-    $x=1;
-}
 
+if(isset($_POST["button"])){
+    $db = getDB();
+    $stmt = $db->prepare("SELECT balance from Accounts where id = :id");
+    $stmt->execute([":id"=>se($_POST, "account_id", -1, false)]);
+    $r = $stmt->fetch();
+    if($r){
+        $balance = se($r, "balance", 0, false);
+        if($balance == 0) { 
+            $stmt2 = $db->prepare("UPDATE Accounts set active = 0 WHERE id = :id");
+            $activity=0;
+            $aid2=get_or_create_account();
+            //$aid=$_GET["account_number"];
+            $stmt2->execute([":id"=>se($_POST, "account_id", -1, false)]);
+            flash("Closed account", "success");
+        } 
+        else{
+            flash("Cannot close account due to funds", "danger");
+        }
+    }
+    }
+
+/*
 if(isset($_POST['button'])){
-    if($x==1){
-        flash("Cannot close account due to funds", "danger");
+    foreach($result as $item) : 
+        //if(str_contains($item["balance"], "0")) :
+        if($item["balance"] == 0) :
+            //se($item,"balance");
+            $cash = $item["balance"];
+    
+    $x=0;
+    if($cash = true){
+        $x=0;
     }
     else{
-        $stmt = $db->prepare("UPDATE Accounts set Active = :a WHERE account_number = :an");
-        $activity=0;
-        //$aid=$_GET["account_number"];
-        $stmt->execute([":a" => $activity, ":an" => $aid2]);
-        flash("Closed account", "success");
+        $x=1;
     }
-}
+    //echo $x;
+    */
+
 ?>
 
 <div class="container-fluid">
@@ -67,6 +86,7 @@ if(isset($_POST['button'])){
                 <li> Account Type: <?php se($item, "account_type"); ?> </li>
                 <li> Balance: $<?php se($item, "balance"); ?></li>
                 <form method=post>
+                    <input type="hidden" name="account_id" value="<?php se($item, 'id');?>"/>
                     <input type="submit" name="button" value="Close Account"/>
                 </form>
             </ul>
