@@ -78,9 +78,13 @@ catch(PDOException $e){
     <div class="mb-3">
         <label class="form-label" for="deposit">Account for Depositing Loan: </label>
         <select name="account1">
-        <?php foreach($result as $item) : ?>
-			<option value=<?php se($item, "id"); ?>><?php se($item, "account_number");?> - <?php se($item, "account_type"); ?></option>
-        <?php endforeach; ?>
+        <?php foreach ($result as $item) : 
+                if(!str_contains($item["account_type"], "loan")) :
+                    $type = $item["account_type"];
+                    $accountNumber = $item["account_number"];
+            ?>
+                <option value="<?php se($item, "id"); ?>"><?php echo $accountNumber;?> - <?php echo $type ?> </option>
+            <?php endif; endforeach;?>
 		</select>
     </div>
 
