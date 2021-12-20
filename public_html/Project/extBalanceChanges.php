@@ -37,7 +37,7 @@
         return $result;
     }
     $db = getDB();
-    $stmt2 = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid");
+    $stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE user_id = :uid AND active LIMIT 10");
         $result3 =[];
         try{
         $stmt2 -> execute([":uid" => $user_id]);
@@ -52,7 +52,7 @@
         }
 
 
-        $stmt4 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE id = :id LIMIT 10");
+        $stmt4 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE id = :id AND active LIMIT 10");
         $result5 =[];
         try{
         $stmt4 -> execute([":id" => $id]);
