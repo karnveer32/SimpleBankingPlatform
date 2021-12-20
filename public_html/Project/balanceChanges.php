@@ -107,7 +107,7 @@ function do_bank_action($account1, $account2, $amountChange, $reason){
 	return $result;
 }
 $db = getDB();
-$stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE user_id = :uid LIMIT 10");
+$stmt2 = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid LIMIT 10");
     $result3 =[];
     try{
     $stmt2 -> execute([":uid" => $user_id]);
@@ -125,18 +125,25 @@ $stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE us
 <form method="POST">
     <label type="text" placeholder="Account Number" class="form-label" for="account_number">Account Number</label>
     <select name="account1">
-			<?php foreach ($result3 as $item) : ?>
-                <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number");?> - Checking </option>
-                <?php endforeach;?> 
+    <?php foreach ($result3 as $item) : 
+                if(!str_contains($item["account_type"], "loan")) :
+                    $type = $item["account_type"];
+                    $accountNumber = $item["account_number"];
+            ?>
+                <option value="<?php se($item, "id"); ?>"><?php echo $accountNumber;?> - <?php echo $type ?> </option>
+            <?php endif; endforeach;?>
     </select>
     <!-- If our sample is a transfer show other account field-->
 	<?php if($_GET['reason'] == 'transfer') : ?>
     <label type="text" placeholder="Other Account Number" class="form-label" for="account_number">Other Account Number</label>
     <select name="account2">
-			<?php foreach ($result3 as $item) : ?>
-                <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number"); ?> - Checking </option>
-                <?php endforeach;?> 
-        </select>
+    <?php foreach ($result3 as $item) : 
+                if(!str_contains($item["account_type"], "loan")) :
+                    $type = $item["account_type"];
+                    $accountNumber = $item["account_number"];
+            ?>
+                <option value="<?php se($item, "id"); ?>"><?php echo $accountNumber;?> - <?php echo $type ?> </option>
+            <?php endif; endforeach;?>
 	<?php endif; ?>
 
 	<input type="number" name="diff" min=0 placeholder="$0.00"/>
@@ -150,7 +157,6 @@ $stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE us
 </form>
 
 <?php
-$bal2=se($item, 'balance');
 error_log("received: " . var_export($_POST,true));
 if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff'])){
 	$reason = $_GET['reason'];
@@ -164,7 +170,7 @@ if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff']))
 			//do_bank_action("000000000000", $_POST['account1'], ($amount * -1), $reason);
             change_bills($amount, "Deposit", -1, $acc, $memo);
             flash("Your deposit was successfull", "success");
-			break;
+            break;
 		case 'withdraw':
 			//do_bank_action($_POST['account1'], -1, ($amount * -1), $reason);
             change_bills($amount, "Withdraw", $acc, -1, $memo);

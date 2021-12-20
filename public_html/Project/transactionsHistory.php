@@ -62,7 +62,6 @@ try {
     $stmt3->execute([":src" => $src]);
     $r3 = $stmt3->fetchALL(PDO::FETCH_ASSOC);
     if ($r3) {
-
         $results3 = $r3;
     }
 } catch (PDOException $e) {
@@ -82,12 +81,58 @@ try {
 
 $apy=10;
 
-    if($atype == "savings"){
+    if($atype == "savings" OR $atype == "loan"){
         $apy="10%";
     }
     else{
         $apy="-";
     }
+
+    $stmt5 = $db->prepare("SELECT account_number, balance, account_type FROM Accounts WHERE id=:src");
+    try {
+        $stmt5->execute([":src" => $src]);
+        $r5 = $stmt5->fetch(PDO::FETCH_ASSOC);
+        if ($r5) {
+            $results5 = $r5;
+            $accountType = $r5["account_type"];
+            $bal = $r5["balance"];
+        }
+    } catch (PDOException $e) {
+        flash("<pre>" . var_export($e, true) . "</pre>");
+    }
+
+    $a=0;
+    if($accountType == "loan"){
+        $a=1;
+    }
+    elseif($accountType == "savings"){
+        $a=2;
+    }
+    else{
+        $a=3;
+    }
+
+    $stmt6 = $db->prepare("SELECT diff, reason FROM Transactions WHERE src =:src");
+    try {
+        $stmt6->execute([":src" => $src]);
+        $r6 = $stmt6->fetch(PDO::FETCH_ASSOC);
+        if ($r6) {
+            $results6 = $r6;
+            $type=$r6["reason"];
+
+        }
+    } catch (PDOException $e) {
+        flash("<pre>" . var_export($e, true) . "</pre>");
+    }
+    $t=1;
+    foreach($results6 as $item) :
+        if($type == "loan amount"){
+            $t=1;
+        }
+    endforeach;
+    //if(strpos($type, 'loan')){
+        //$t=1;
+    //}
 ?>
 
 <div class="container-fluid">
@@ -98,8 +143,21 @@ $apy=10;
                                     endforeach; ?> </li>
             <li> Account Type: <?php foreach ($results3 as $result) : se($result, 'account_type');
                                     endforeach; ?> </li>
+            <?php if($a>1) : ?>
             <li> Balance: $<?php foreach ($results3 as $result) : se($result, 'balance');
                             endforeach; ?></li>
+            <?php endif; ?>
+            <?php if($a==1) : ?>
+            <li>Loan Balance: $<?php 
+            if($a==1){
+                foreach($results3 as $result) : 
+                    se($result, 'balance');
+                endforeach; 
+            }
+        endif;
+
+            ?>
+            </li>
             <li> APY: <?php echo $apy ?></li>
             <li> Opened/Created Date: <?php foreach ($results2 as $result) : se($result, 'created');
                                         endforeach; ?> </li>
