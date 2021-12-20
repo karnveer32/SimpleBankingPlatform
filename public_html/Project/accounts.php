@@ -7,28 +7,53 @@ require(__DIR__ . "/../../partials/nav.php");
 
 $user_id=get_user_id();
 $db=getDB();
-$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid");
+$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid AND active");
 $result =[];
 try{
 $stmt -> execute([":uid" => $user_id]);
 $r = $stmt->fetchALL(PDO::FETCH_ASSOC);
     if ($r) {
-        
         $result = $r;
-        $bal=$r["balance"];
+    }
+}
+catch(PDOException $e){
+    flash("<pre>" . var_export($e, true). "</pre>");
+}
+
+$user2 = se($_GET, "id", -1, false);
+$stmt2 = $db->prepare("SELECT account_number, balance FROM Accounts WHERE user_id = :uid AND active");
+$result2 =[];
+try{
+$stmt2 -> execute([":uid" => $user2]);
+$r2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+    if ($r2) {
+        $bal2=$r2['balance'];
+        $aid2=$r2["account_number"];
     }
 }
 catch(PDOException $e){
     flash("<pre>" . var_export($e, true). "</pre>");
 }
 $x=0;
-if($bal>0){
-    $x=1;
-}
-else{
+if($bal == 0){
     $x=0;
 }
+else{
+    $x=1;
+}
 
+if(isset($_POST['button'])){
+    if($x==1){
+        flash("Cannot close account due to funds", "danger");
+    }
+    else{
+        $stmt = $db->prepare("UPDATE Accounts set Active = :a WHERE account_number = :an");
+        $activity=0;
+        //$aid=$_GET["account_number"];
+        $stmt->execute([":a" => $activity, ":an" => $aid2]);
+        flash("Closed account", "success");
+    }
+}
 ?>
 
 <div class="container-fluid">
@@ -41,21 +66,14 @@ else{
                 <li> Account Number: <?php se($item, "account_number"); ?> </li>
                 <li> Account Type: <?php se($item, "account_type"); ?> </li>
                 <li> Balance: $<?php se($item, "balance"); ?></li>
-                <li><input type="submit" value="Close Account"/></li>
+                <form method=post>
+                    <input type="submit" name="button" value="Close Account"/>
+                </form>
             </ul>
         </li> 
     </ul>
 </nav>
-<?php 
-if(isset($_POST['submit'])){
-    if($x=1){
-        flash("Cannot close account due to funds", "danger");
-    }
-    else{
-        flash("Closed account", "success");
-    }
-}
-endforeach; 
+<?php endforeach; 
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>
 </div>
