@@ -7,7 +7,7 @@ require(__DIR__ . "/../../partials/nav.php");
 
 $user_id=get_user_id();
 $db=getDB();
-$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid LIMIT 5");
+$stmt = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid");
 $result =[];
 try{
 $stmt -> execute([":uid" => $user_id]);

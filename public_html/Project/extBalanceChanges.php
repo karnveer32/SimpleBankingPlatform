@@ -37,7 +37,7 @@
         return $result;
     }
     $db = getDB();
-    $stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE user_id = :uid LIMIT 10");
+    $stmt2 = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid");
         $result3 =[];
         try{
         $stmt2 -> execute([":uid" => $user_id]);
@@ -70,9 +70,13 @@
     <form method="POST">
         <label type="text" placeholder="Account Number" class="form-label" for="account_number">Account Number</label>
         <select name="account1">
-                <?php foreach ($result3 as $item) : ?>
-                    <option value="<?php se($item, "id"); ?>"><?php se($item, "account_number");?> - Checking </option>
-                <?php endforeach;?> 
+        <?php foreach ($result3 as $item) : 
+                if(!str_contains($item["account_type"], "loan")) :
+                    $type = $item["account_type"];
+                    $accountNumber = $item["account_number"];
+            ?>
+                <option value="<?php se($item, "id"); ?>"><?php echo $accountNumber;?> - <?php echo $type ?> </option>
+            <?php endif; endforeach;?>
         </select>
        
         <!-- If our sample is a transfer show other account field-->
