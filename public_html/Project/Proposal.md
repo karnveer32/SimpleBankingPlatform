@@ -199,71 +199,199 @@
 
  [https://github.com/karnveer32/IT202-011/pull/167](https://github.com/karnveer32/IT202-011/pull/167)</p></td></tr><tr><td><table><tr><td>F4 - Form should include a dropdown of the current user’s accounts (as AccountSrc) Form should include a field for the destination user’s last name Form should include a field for the last 4 digits of the destination user’s account number (to lookup AccountDest) Form should include a field for a positive numerical value Form should allow the user to record a memo for the transaction System shouldn’t let the user transfer more than the balance of their account System will lookup appropriate account based on destination user’s last name and the last 4 digits of the account number Show appropriate user-friendly error messages Show user-friendly success messages Transaction will be recorded with the type as “ext-transfer” Each transaction is recorded as a transaction pair in the Transaction table These will reflect in the transaction history page<tr><td>Status: completed</td></tr><tr><td><img width="600px" src="https://user-images.githubusercontent.com/81723756/145250674-7545a2db-6343-49ad-a5ac-f442d877e5c2.png"><p>Above you can see a picture of the page where the user can conduct external transfers by selecting the account they want to send money from and typing in the last name and the last 4 digits of the account number they want to make the transfer to. </td></tr></td></tr></table></td></tr></td></tr></table>
 
-- Milestone 4
-- [ ] \(mm/dd/yyyy of completion) User can set their profile to be public or private (will need another column in Users table)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<table>
+<tr><td>Milestone 4</td></tr><tr><td>
+<table>
+<tr><td>F1 - User can set their profile to be public or private (will need another column in Users table) (2021-12-14)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
 
+ [https://ks38-prod.herokuapp.com/Project/profile.php](https://ks38-prod.herokuapp.com/Project/profile.php)</p></td></tr>
+<tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able open a savings account
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/185](https://github.com/karnveer32/IT202-011/pull/185)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F1 - If public, hide email address from other users</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146105694-45fb779a-77a4-4bb2-bbae-d2da89ff374b.png">
+<p>The above screenshot shows the profile page when the user visits it. Here the user can only see the username and creation date, after clicking Edit, the user can see the below screenshot. Here the user cannot see the email as the account used to show this is set as public.</p>
+</td></tr>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to take out a loan
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146105726-2cb465a0-a8f0-427d-b124-d19f62c08d6f.png">
+<p>The above screenshot shows the profile page after edit is clicked, here the user can update any information</p>
+</td></tr>
 
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F2 - User will be able open a savings account (2021-12-18)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Listing accounts and/or viewing Account Details should show any applicable APY or “-” if none is set for the particular account (may alternatively just hide the display for these types)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://ks38-prod.herokuapp.com/Project/createAccounts.php](https://ks38-prod.herokuapp.com/Project/createAccounts.php)</p></td></tr>
+<tr><td>PRs:<p>
 
+ [https://github.com/karnveer32/IT202-011/pull/193](https://github.com/karnveer32/IT202-011/pull/193)</p><p>
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to close an account
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/karnveer32/IT202-011/pull/197](https://github.com/karnveer32/IT202-011/pull/197)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F2 - System will generate a 12 digit/character account number per the existing rules (see Checking Account above) System will associate the account to the user Account type will be set as savings Will require a minimum deposit of $5 (from the world account) Entry will be recorded in the Transaction table in a transaction pair (per notes below) Account Balance will be updated based on SUM of BalanceChange of AccountSrc System sets an APY that’ll be used to calculate monthly interest based on the balance of the account Recommended to create a table for “system properties” and have this value stored there and fetched when needed, this will allow you to have an admin account change the value in the future) User will see user-friendly error messages when appropriate User will see user-friendly success message when account is created successfully Redirect user to their Accounts page</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146657126-c491ee9a-e489-4c11-998c-09ecdc65eb9a.png">
+<p>In the above picture, you can see that a user can visit the Create Account Page and create a savings account. </p>
+</td></tr>
 
-- [ ] \(mm/dd/yyyy of completion) Admin role (leave this section for last)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146657143-0e29ef48-dd31-4ddf-a130-ce01ec5ea8df.png">
+<p> In the above picture, I am showing you a sample account for one of the users savings accounts and it shows the APY which in this case I kept it at a default of 10%. </p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F3 - User will be able to take out a loan (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [ https://ks38-prod.herokuapp.com/Project/loans.php]( https://ks38-prod.herokuapp.com/Project/loans.php)</p><p>
+
+ [ https://ks38-prod.herokuapp.com/Project/payoffLoan.php]( https://ks38-prod.herokuapp.com/Project/payoffLoan.php)</p><p>
+
+ [ https://ks38-prod.herokuapp.com/Project/accounts.php]( https://ks38-prod.herokuapp.com/Project/accounts.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/204](https://github.com/karnveer32/IT202-011/pull/204)</p><p>
+
+ [https://github.com/karnveer32/IT202-011/pull/207](https://github.com/karnveer32/IT202-011/pull/207)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F3 - System will generate a 12 digit/character account number per the existing rules (see Checking Account above) Account type will be set as loan Will require a minimum value of $500 System will show an APY (before the user submits the form) This will be used to add interest to the loan account Recommended to create a table for “system properties” and have this value stored there and fetched when needed, this will allow you to have an admin account change the value in the future) Form will have a dropdown of the user’s accounts of which to deposit the money into</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="System will generate a 12 digit/character account number per the existing rules (see Checking Account above) Account type will be set as loan Will require a minimum value of $500 System will show an APY (before the user submits the form) This will be used to add interest to the loan account Recommended to create a table for “system properties” and have this value stored there and fetched when needed, this will allow you to have an admin account change the value in the future) Form will have a dropdown of the user’s accounts of which to deposit the money into">
+<p>In the above picture, you can see where the user can obtain a loan for the account they would like the loan to go towards as well as the amount and APY. </p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146723445-19367679-f28b-481f-8c8f-6c2cc9936f7a.png">
+<p> In the above picture, you can see the user can pay off a loan. It does not need to be in full and can pay how ever much they like from their accounts.</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146723045-da7d9786-c513-4946-8d23-b9f5b04932fb.png">
+<p>In the above pictures you can see the various loans after you take them out and their information.</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146723272-4c35c5f2-2cb0-4c31-9a42-200f68526385.png">
+<p>In the picture, you can see the transaction history for one of the loan amounts where I took the opportunity to first take out a loan, and then pay $10 in payment to show the balance decrease. 
+</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F4 - Listing accounts and/or viewing Account Details should show any applicable APY or “-” if none is set for the particular account (may alternatively just hide the display for these types) (2021-12-18)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [ https://ks38-prod.herokuapp.com/Project/transactionsHistory.php?id=23]( https://ks38-prod.herokuapp.com/Project/transactionsHistory.php?id=23)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/200](https://github.com/karnveer32/IT202-011/pull/200)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F4 - No specific Sub-feature</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146661079-d35099ae-cb7f-40cb-90a7-2e4f8d8bb187.png">
+<p>In the above picture, you can see that if the account being viewed is a savings account, it will show the APY amount, which in this case is 10%. </p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146661128-b969df47-9e19-4280-95fa-21b61eccd89f.png">
+<p>In the above picture, you can see that if the account being viewed is not a savings account, it will show "-" for the APY. </p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F5 - User will be able to close an account (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [ https://ks38-prod.herokuapp.com/Project/accounts.php]( https://ks38-prod.herokuapp.com/Project/accounts.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/211](https://github.com/karnveer32/IT202-011/pull/211)</p><p>
+
+ [https://github.com/karnveer32/IT202-011/pull/214](https://github.com/karnveer32/IT202-011/pull/214)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F5 - User must transfer or withdraw all funds out of the account before doing so Account should have a column “active” that will get set as false. All queries for Accounts should be updated to pull only “active” = true accounts (i.e., dropdowns, My Accounts, etc) Do not delete the record, this is a soft delete so it doesn’t break transactions Closed accounts don’t show up anymore If the account is a loan, it must be paid off in full first</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146830614-4bc65994-c2c4-43e5-99dd-794d8e78357b.png">
+<p> In the above picture you can see that I incorporated the Close Account button under each account where if the user clicks the account the, the system will check if the balance is 0. If there are any funds in the account they wish to close, the account will not close and a message will pop up with this reason to let the user know. If the balance is 0, the account will close and will no longer show up on that page or at any other dropdowns </p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F6 - Admin role (leave this section for last) (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [ https://ks38-prod.herokuapp.com/Project/admin.php]( https://ks38-prod.herokuapp.com/Project/admin.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/karnveer32/IT202-011/pull/217](https://github.com/karnveer32/IT202-011/pull/217)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F6 - Will be able to search for users by firstname and/or lastname Will be able to look-up specific account numbers (partial match). Will be able to see the transaction history of an account Will be able to freeze an account (this is similar to disable/delete but it’s a different column) Frozen accounts still show in results, but they can’t be interacted with. [Dev note]: Will want to add a column to Accounts table called frozen and default it to false Update transactions logic to not allow frozen accounts to be used for a transaction Will be able to open accounts for specific users Will be able to deactivate a user Requires a new column on the Users table (i.e., is_active) Deactivated users will be restricted from logging in “Sorry your account is no longer active”</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/81723756/146858830-e4b9c443-68c0-434e-9766-5ef89312d143.png">
+<p>In the above picture, you can see where the admin can log in to do the admin functions(search up a account, freeze accounts, deactivate users).</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr></td></tr></table>
 ### Intructions 
 #### Don't delete this
 1. Pick one project type
