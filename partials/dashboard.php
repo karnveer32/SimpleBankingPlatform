@@ -11,6 +11,27 @@
                     <li><a href="loans.php">Obtain a Loan</a></li>
                     <li><a href="payoffLoan.php">Pay a Loan</a></li>
                     <li><a href="profile.php">Edit Profile</a></li>
+                    <?php 
+                        $user_id=get_user_id();
+                        $db=getDB();
+                        $stmt = $db->prepare("SELECT id FROM Users WHERE id = :uid");
+                        $result =[];
+                        try{
+                        $stmt -> execute([":uid" => $user_id]);
+                        $r = $stmt->fetchALL(PDO::FETCH_ASSOC);
+                            if ($r) {
+                                $result = $r;
+                                //$id=$r["id"];
+                            }
+                        }
+                        catch(PDOException $e){
+                            flash("<pre>" . var_export($e, true). "</pre>");
+                        }
+
+                        foreach($result as $item) : 
+                            if($item["id"] == 7) : ?>
+                        <li><a href="admin.php"> Admin Resources</a></li>
+                        <?php endif; endforeach; ?>
                 </ul>
             </nav>
         </div>

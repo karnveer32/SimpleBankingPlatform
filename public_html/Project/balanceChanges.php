@@ -107,7 +107,7 @@ function do_bank_action($account1, $account2, $amountChange, $reason){
 	return $result;
 }
 $db = getDB();
-$stmt2 = $db->prepare("SELECT id, account_number, balance FROM Accounts WHERE user_id = :uid AND active LIMIT 10");
+$stmt2 = $db->prepare("SELECT id, account_number, balance, account_type FROM Accounts WHERE user_id = :uid AND active AND NOT Frozen LIMIT 10");
     $result3 =[];
     try{
     $stmt2 -> execute([":uid" => $user_id]);
