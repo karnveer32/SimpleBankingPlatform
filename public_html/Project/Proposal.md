@@ -4,6 +4,7 @@
 ## Project Board Link: https://github.com/karnveer32/IT202-011/projects/1
 ## Website Link: https://ks38-prod.herokuapp.com/Project/login.php
 ## Your Name: Karnveer Singh 
+## Link to Final Demo: https://mediaspace.njit.edu/media/Final+Demo+/1_u6rtbt2q
 
 <!--
 ### Line item / Feature template (use this for each bullet point)
