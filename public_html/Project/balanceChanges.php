@@ -157,7 +157,11 @@ $stmt2 = $db->prepare("SELECT id, account_number, balance, account_type FROM Acc
 </form>
 
 <?php
-$bal=get_or_create_account2();
+//$bal=get_or_create_account2();
+ foreach ($result3 as $item) :
+    error_log(var_export($result3, true));
+    $bal3=se($result3, 'balance');
+endforeach;
 error_log("received: " . var_export($_POST,true));
 if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff'])){
 	$reason = $_GET['reason'];
@@ -165,6 +169,16 @@ if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff']))
     $acc2=$_POST['account2'];
 	$amount = (int)$_POST['diff'];
     $memo=$_POST['reason'];
+
+    $query="SELECT balance FROM Accounts WHERE id = :id";
+        $stmt=$db->prepare($query);
+        $stmt->bindValue(":id", $_POST["account1"]);
+        $stmt->execute();
+        $r=$stmt->fetch();
+        if($r){
+            $bal=$r["balance"];
+        }
+        error_log("balance, $bal");
 
 	switch($reason){
 		case 'deposit':
@@ -179,7 +193,7 @@ if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff']))
 			break;
 		case 'transfer':
 			//TODO figure it out
-            if($amount<=$bal2){
+            if($amount<=$bal){
                 change_bills($amount, "Withdraw", $acc, $acc2, $memo);
                 flash("Your transfer was successfull", "success");
                 break;

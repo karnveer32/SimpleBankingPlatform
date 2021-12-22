@@ -1,2 +1,2 @@
 ALTER TABLE Accounts
-ADD APY int NOT NULL;
+ADD APY int NOT NULL default 0;
