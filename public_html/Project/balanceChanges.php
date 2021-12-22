@@ -157,7 +157,7 @@ $stmt2 = $db->prepare("SELECT id, account_number, balance, account_type FROM Acc
 </form>
 
 <?php
-
+$bal=get_or_create_account2();
 error_log("received: " . var_export($_POST,true));
 if(isset($_GET['reason']) && isset($_POST['account1']) && isset($_POST['diff'])){
 	$reason = $_GET['reason'];
